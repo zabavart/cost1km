@@ -168,7 +168,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Стоимость 1 км = ${cost1km} руб.</label>
+                        <label>${cost1km}</label>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Отправить</button>
@@ -198,92 +198,3 @@
 
 </body>
 </html>
-
-
-<%--<p>--%>
-<%--<b>Цена покупки</b><br>--%>
-<%--<input type="text" size="40" name="cost" value=${cost}>--%>
-<%--</p>--%>
-
-<%--<p>--%>
-<%--<b>Рыночная цена (продажи)</b><br>--%>
-<%--<input type="text" size="40">--%>
-<%--</p>--%>
-
-<%--<p>--%>
-<%--<input ng-click="isCredit()" type="checkbox">Куплена в кредит?<Br>--%>
-<%--</p>--%>
-
-<%--<p ng-hide="credit">--%>
-
-<%--<b>Сумма кредита</b><br>--%>
-<%--<input type="text" size="40"><br>--%>
-
-<%--<b>Процентная ставка</b><br>--%>
-<%--<input type="text" size="40"><br>--%>
-
-<%--<b>Срок кредита</b><br>--%>
-<%--<input type="text" size="40"><br>--%>
-
-<%--<b>Переплата</b><br>--%>
-<%--<input type="text" size="40"><br>--%>
-<%--</p>--%>
-
-<%--<p>--%>
-<%--<input ng-click="toggle()" type="checkbox" name="option2" value="a2">Страховка?<Br>--%>
-<%--</p>--%>
-
-<%--<p ng-hide="myVar">--%>
-<%--First Name: <input type=text ng-model="firstName"><br>--%>
-<%--Last Name: <input type=text ng-model="lastName"><br><br>--%>
-<%--Full Name: {{firstName + " " + lastName}}--%>
-<%--</p>--%>
-
-<%--<p>--%>
-<%--<b>Страховка</b><br>--%>
-<%--<input type="text" size="40">--%>
-<%--</p>--%>
-
-<%--</div>--%>
-
-<%--<p>--%>
-<%--<b>Налоги</b><br>--%>
-<%--<input type="text" size="40">--%>
-<%--</p>--%>
-
-<%--<p>--%>
-<%--<b>Ремонты</b><br>--%>
-<%--<input type="text" size="40">--%>
-<%--</p>--%>
-
-<%--<p>--%>
-<%--<b>ТО</b><br>--%>
-<%--<input type="text" size="40">--%>
-<%--</p>--%>
-
-<%--<p>--%>
-<%--<b>Бензин</b><br>--%>
-<%--<input type="text" size="40">--%>
-<%--</p>--%>
-
-<%--<p>--%>
-<%--<b>Пробег</b><br>--%>
-<%--<input type="text" size="40" name="milesOn" value=${milesOn}>--%>
-<%--</p>--%>
-
-<%--<p>--%>
-<%--<b>Кол-во лет</b><br>--%>
-<%--<input type="text" size="40" name="age" value=${age}>--%>
-<%--</p>--%>
-
-<%--<p>--%>
-<%--<input type="submit" value="Отправить">--%>
-<%--</p>--%>
-
-
-
-
-
-
-
-

@@ -31,7 +31,7 @@ public class MyServlet extends HttpServlet {
         request.setAttribute("benzine", benzine);
         request.setAttribute("otherExpenses", otherExpenses);
         request.setAttribute("sellingPrice", sellingPrice);
-        request.setAttribute("cost1km", cost1km.calc());
+        request.setAttribute("cost1km", "Стоимость 1 км = " + cost1km.calc() + " руб.");
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
     }

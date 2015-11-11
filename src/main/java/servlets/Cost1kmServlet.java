@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 
 @WebServlet("/s")
-public class MyServlet extends HttpServlet {
+public class Cost1kmServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

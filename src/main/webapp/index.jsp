@@ -74,12 +74,33 @@
                     <li><a href="#">2011</a></li>
                     <li><a href="#">&raquo;</a></li>
                 </ul>
+
                 <div ng-app="myApp" ng-controller="personCtrl">
 
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" ng-click="toggle()"> машина в кредит?
                         </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Марка</label>
+                        <select class="form-control" name="carMark">
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Модель</label>
+                        <select class="form-control" name="carModel"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Серия</label>
+                        <select class="form-control" name="carSerie"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Модификация</label>
+                        <select class="form-control" name="carModification"></select>
                     </div>
 
                     <div ng-show="myVar">
@@ -124,7 +145,7 @@
                         <label>Цена авто</label>
 
                         <div class="input-group">
-                            <input type="text" class="form-control" name="price" name="price" id="price" value=${price}>
+                            <input type="text" class="form-control" name="price" value=${price}>
                             <span class="input-group-addon">руб.</span>
                         </div>
                     </div>
@@ -151,8 +172,7 @@
                         <label>Прочее расходы</label>
 
                         <div class="input-group">
-                            <input type="text" class="form-control" name="otherExpenses"
-                                   value=${otherExpenses}>
+                            <input type="text" class="form-control" name="otherExpenses" value=${otherExpenses}>
                             <span class="input-group-addon">руб.</span>
                         </div>
                     </div>
@@ -161,8 +181,7 @@
                         <label>Цена продажи (рыночная)</label>
 
                         <div class="input-group">
-                            <input type="text" class="form-control" name="sellingPrice"
-                                   value=${sellingPrice}>
+                            <input type="text" class="form-control" name="sellingPrice" value=${sellingPrice}>
                             <span class="input-group-addon">руб.</span>
                         </div>
                     </div>

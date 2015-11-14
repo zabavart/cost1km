@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +15,8 @@
 </head>
 
 <body>
+
+
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -91,7 +94,11 @@
 
                     <div class="form-group">
                         <label>Модель</label>
-                        <select class="form-control" name="carModel"></select>
+                        <select class="form-control" name="carModel">
+                            <c:forEach var="num" items="${list}">
+                                <option>${num}</option>
+                            </c:forEach>
+                        </select>
                     </div>
 
                     <div class="form-group">

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet("/s")
 public class Cost1kmServlet extends HttpServlet {
@@ -45,6 +46,11 @@ public class Cost1kmServlet extends HttpServlet {
         request.setAttribute("benzine", 400000);
         request.setAttribute("otherExpenses", 200000);
         request.setAttribute("sellingPrice", 300000);
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("111");
+        list.add("222");
+        list.add("333");
+        request.setAttribute("list", list);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);

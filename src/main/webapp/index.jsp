@@ -89,15 +89,15 @@
                     <div class="form-group">
                         <label>Марка</label>
                         <select class="form-control" name="carMark">
+                            <c:forEach var="num" items="${list}">
+                                <option>${num}</option>
+                            </c:forEach>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label>Модель</label>
                         <select class="form-control" name="carModel">
-                            <c:forEach var="num" items="${list}">
-                                <option>${num}</option>
-                            </c:forEach>
                         </select>
                     </div>
 

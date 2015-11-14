@@ -1,7 +1,8 @@
 package database;
 
 public class Query {
-    public static String createTableSQL =
-            "insert into users(id, name) " +
-            "values ('2', 'name')";
+    public static String car_mark =
+            "select id_car_mark, " +
+            "       name " +
+            "  from car_mark;";
 }

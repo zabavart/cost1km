@@ -1,5 +1,8 @@
 package servlets;
 
+import database.DbConnection;
+import database.Query;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 @WebServlet("/s")
@@ -46,13 +51,26 @@ public class Cost1kmServlet extends HttpServlet {
         request.setAttribute("benzine", 400000);
         request.setAttribute("otherExpenses", 200000);
         request.setAttribute("sellingPrice", 300000);
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("111");
-        list.add("222");
-        list.add("333");
-        request.setAttribute("list", list);
+
+        try {
+            request.setAttribute("list", getCarMark());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private ArrayList<String> getCarMark() throws SQLException {
+        DbConnection dbConnection = new DbConnection();
+        Statement statement = dbConnection.getStatement();
+        ResultSet result1 = statement.executeQuery(Query.car_mark);
+        ArrayList<String> list = new ArrayList<String>();
+        while (result1.next()) {
+            list.add(result1.getString("name"));
+        }
+        statement.close();
+        return list;
     }
 }

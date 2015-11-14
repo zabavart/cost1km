@@ -15,12 +15,6 @@ public class Cost1km {
     public Cost1km(long cost, long milesOn)  {
         this.cost = cost;
         this.milesOn = milesOn;
-//        try {
-//            createDbUserTable();
-//        } catch (SQLException e) {
-//            System.out.println("@@@@@@@@@@");
-//            e.printStackTrace();
-//        }
     }
 
     public float calc() {
@@ -28,13 +22,4 @@ public class Cost1km {
         cost1km = new BigDecimal(cost1km).setScale(2, RoundingMode.UP).floatValue();
         return cost1km;
     }
-
-    private void createDbUserTable() throws SQLException {
-        DbConnection dbConnection = new DbConnection();
-        Statement statement = dbConnection.getStatement();
-        statement.execute(Query.createTableSQL);
-        statement.close();
-    }
-
-
 }

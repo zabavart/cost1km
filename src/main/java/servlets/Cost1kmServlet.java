@@ -53,10 +53,17 @@ public class Cost1kmServlet extends HttpServlet {
         request.setAttribute("sellingPrice", 300000);
 
         try {
-            request.setAttribute("list", getCarMark());
+            request.setAttribute("carMarkList", getCarMark());
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        try {
+            request.setAttribute("carModelList", getCarModel());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
@@ -64,8 +71,19 @@ public class Cost1kmServlet extends HttpServlet {
 
     private ArrayList<String> getCarMark() throws SQLException {
         DbConnection dbConnection = new DbConnection();
+        ResultSet result1 = dbConnection.getStatement().executeQuery(Query.car_mark);
+        ArrayList<String> list = new ArrayList<String>();
+        while (result1.next()) {
+            list.add(result1.getString("name"));
+        }
+        dbConnection.getStatement().close();
+        return list;
+    }
+
+    private ArrayList<String> getCarModel() throws SQLException {
+        DbConnection dbConnection = new DbConnection();
         Statement statement = dbConnection.getStatement();
-        ResultSet result1 = statement.executeQuery(Query.car_mark);
+        ResultSet result1 = statement.executeQuery(Query.car_model);
         ArrayList<String> list = new ArrayList<String>();
         while (result1.next()) {
             list.add(result1.getString("name"));

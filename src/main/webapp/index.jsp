@@ -89,7 +89,7 @@
                     <div class="form-group">
                         <label>Марка</label>
                         <select class="form-control" name="carMark">
-                            <c:forEach var="num" items="${list}">
+                            <c:forEach var="num" items="${carMarkList}">
                                 <option>${num}</option>
                             </c:forEach>
                         </select>
@@ -98,6 +98,9 @@
                     <div class="form-group">
                         <label>Модель</label>
                         <select class="form-control" name="carModel">
+                            <c:forEach var="num" items="${carModelList}">
+                                <option>${num}</option>
+                            </c:forEach>
                         </select>
                     </div>
 
@@ -197,7 +200,7 @@
                         <label>${cost1km}</label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Отправить</button>
+                <button class="btn btn-primary">Отправить</button>
             </div>
             <div class="col-md-4"></div>
         </div>

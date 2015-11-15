@@ -12,6 +12,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/starter-template.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -88,7 +89,7 @@
 
                     <div class="form-group">
                         <label>Марка</label>
-                        <select class="form-control" name="carMark">
+                        <select class="form-control xz3" name="carMark">
                             <c:forEach var="num" items="${carMarkList}">
                                 <option>${num}</option>
                             </c:forEach>
@@ -208,6 +209,17 @@
 </div>
 
 <script>
+    $(document).ready(function(){
+        $(".xz3").change(function(){
+            $.post('/s', 'aaa=5', onAjaxSuccess);
+            function onAjaxSuccess(data)
+            {
+                // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+                alert(data);
+            }
+        });
+    });
+
     var app = angular.module('myApp', []);
     app.controller('personCtrl', function ($scope) {
         $scope.person = {
@@ -221,8 +233,6 @@
     });
 </script>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
 </body>

@@ -22,6 +22,9 @@ public class Cost1kmServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
+        System.out.println("POST1 POST POST");
+        System.out.println(request.getParameterMap().entrySet());
+        System.out.println(request.getParameter("aaa"));
 
         int price = Integer.parseInt(request.getParameter("price"));
         int milesOn = Integer.parseInt(request.getParameter("milesOn"));

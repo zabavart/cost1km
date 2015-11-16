@@ -3,15 +3,20 @@ package servlets;
 import database.DbConnection;
 import database.Query;
 import model.Cost1kmModel;
+
+import org.json.simple.JSONObject;
+
 import utils.Util;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,15 +44,20 @@ public class Cost1kmServlet extends HttpServlet {
     model.setOtherExpenses(Util.parseInt(request.getParameter("otherExpenses")));
     model.setSellingPrice(Util.parseInt(request.getParameter("sellingPrice")));
 
-    System.out.println("!!!!!! " + model.getBenzine());
     int cost = model.getPrice() + model.getBenzine() + model.getOtherExpenses() - model.getSellingPrice();
-    System.out.println("!!3434!!!!");
-    System.out.println(cost);
-    System.out.println(model.getMilesOn());
     Cost1km cost1km = new Cost1km(cost, model.getMilesOn());
 
+    JSONObject resultJson = new JSONObject();
+    resultJson.put("cost1km", cost1km.calc());
+
+    try {
+      resultJson.put("carModel", getCarModel(model.getCarMark()));
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
     PrintWriter out = response.getWriter();
-    out.println(cost1km.calc()) ;
+    System.out.println(resultJson.toString());
+    out.println(resultJson);
     out.close();
   }
 
@@ -92,10 +102,23 @@ public class Cost1kmServlet extends HttpServlet {
   private HashMap<String, String> getCarModel() throws SQLException {
     DbConnection dbConnection = new DbConnection();
     Statement statement = dbConnection.getStatement();
-    ResultSet result1 = statement.executeQuery(Query.car_model);
+    ResultSet resultSet = statement.executeQuery(Query.car_model);
     HashMap<String, String> map = new HashMap<String, String>();
-    while (result1.next()) {
-      map.put(result1.getString("id_car_model"), result1.getString("name"));
+    while (resultSet.next()) {
+      map.put(resultSet.getString("id_car_model"), resultSet.getString("name"));
+    }
+    dbConnection.getStatement().close();
+    return map;
+  }
+
+  private HashMap<String, String> getCarModel(int id_car_mark) throws SQLException {
+    DbConnection dbConnection = new DbConnection();
+    PreparedStatement preparedStatement = dbConnection.getConnection().prepareStatement(Query.car_model_by_id_car_model);
+    preparedStatement.setInt(1, id_car_mark);
+    ResultSet resultSet = preparedStatement.executeQuery();
+    HashMap<String, String> map = new HashMap<String, String>();
+    while (resultSet.next()) {
+      map.put(resultSet.getString("id_car_model"), resultSet.getString("name"));
     }
     dbConnection.getStatement().close();
     return map;

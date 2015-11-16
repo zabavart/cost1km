@@ -10,4 +10,10 @@ public class Query {
       "select id_car_model, " +
       "       name " +
       "  from car_model;";
+
+  public static String car_model_by_id_car_model =
+          "select id_car_model, " +
+          "       name " +
+          "  from car_model " +
+          " where id_car_mark = ?";
 }

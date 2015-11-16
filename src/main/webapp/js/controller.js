@@ -14,8 +14,8 @@ $('#mainForm').change(function () {
             sellingPrice: $('#sellingPrice').val()
         },
         function (data) {
-            console.log('!!!' + data);
-            $('#cost1km').text(data);
+            $('#cost1km').text(data.cost1km);
+            //$('#carModel').text(data.carModel);
         });
 });
 

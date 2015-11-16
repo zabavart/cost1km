@@ -2,36 +2,37 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DB {
-    private String dbDriver;
-    private String dbConnection;
-    private String dbUser;
-    private String dbPassword;
-    private Connection connection;
-    private Statement statement;
+  private Connection connection;
+  private Statement statement;
 
-    public DB(String dbDriver, String dbConnection, String dbUser, String dbPassword) {
-        this.dbDriver = dbDriver;
-        this.dbConnection = dbConnection;
-        this.dbUser = dbUser;
-        this.dbPassword = dbPassword;
+  public DB(String dbDriver, String dbConnection, String dbUser, String dbPassword) {
+    try {
+      Class.forName(dbDriver);
+      connection = DriverManager.getConnection(dbConnection, dbUser, dbPassword);
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
+  }
 
-    public Statement getStatement() {
-        if (statement == null) {
-            try {
-                Class.forName(dbDriver);
-                connection = DriverManager.getConnection(dbConnection, dbUser, dbPassword);
-                statement = connection.createStatement();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-        return statement;
+  public Statement getStatement() {
+    if (statement == null) {
+      try {
+        statement = connection.createStatement();
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
     }
+    return statement;
+  }
+
+  public Connection getConnection() {
+    return connection;
+  }
 }

@@ -9,10 +9,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Cost1km {
-    long cost;
-    long milesOn;
+    int cost;
+    int milesOn;
 
-    public Cost1km(long cost, long milesOn)  {
+    public Cost1km(int cost, int milesOn)  {
         this.cost = cost;
         this.milesOn = milesOn;
     }

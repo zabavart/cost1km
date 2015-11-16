@@ -47,7 +47,7 @@
         <p class="lead">Стоимость километра пробега</p>
     </div>
 
-    <form role="form" method="post">
+    <form role="form" method="post" id="mainForm">
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
@@ -89,29 +89,29 @@
 
                     <div class="form-group">
                         <label>Марка</label>
-                        <select class="form-control xz3" name="carMark">
-                            <c:forEach var="num" items="${carMarkList}">
-                                <option>${num}</option>
+                        <select class="form-control" id="carMark">
+                            <c:forEach items="${carMarkList}" var="entry">
+                                <option value=${entry.key}>${entry.value}</option>
                             </c:forEach>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label>Модель</label>
-                        <select class="form-control" name="carModel">
-                            <c:forEach var="num" items="${carModelList}">
-                                <option>${num}</option>
+                        <select class="form-control" id="carModel">
+                            <c:forEach items="${carModelList}" var="entry">
+                                <option value=${entry.key}>${entry.value}</option>
                             </c:forEach>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label>Серия</label>
-                        <select class="form-control" name="carSerie"></select>
+                        <select class="form-control" id="carSerie"></select>
                     </div>
                     <div class="form-group">
                         <label>Модификация</label>
-                        <select class="form-control" name="carModification"></select>
+                        <select class="form-control" id="carModification"></select>
                     </div>
 
                     <div ng-show="myVar">
@@ -119,7 +119,7 @@
                             <label>Процентная ставка</label>
 
                             <div class="input-group">
-                                <input type="text" class="form-control" name="cost">
+                                <input type="text" class="form-control" id="cost">
                                 <span class="input-group-addon">%</span>
                             </div>
                         </div>
@@ -156,7 +156,7 @@
                         <label>Цена авто</label>
 
                         <div class="input-group">
-                            <input type="text" class="form-control" name="price" value=${price}>
+                            <input type="text" class="form-control" id="price" value=${price}>
                             <span class="input-group-addon">руб.</span>
                         </div>
                     </div>
@@ -165,7 +165,7 @@
                         <label>Пробег</label>
 
                         <div class="input-group">
-                            <input type="text" class="form-control" name="milesOn" value=${milesOn}>
+                            <input type="text" class="form-control" id="milesOn" value=${milesOn}>
                             <span class="input-group-addon"> км</span>
                         </div>
                     </div>
@@ -174,7 +174,7 @@
                         <label>Расходы на бензин</label>
 
                         <div class="input-group">
-                            <input type="text" class="form-control" name="benzine" value=${benzine}>
+                            <input type="text" class="form-control" id="benzine" value=${benzine}>
                             <span class="input-group-addon">руб.</span>
                         </div>
                     </div>
@@ -183,7 +183,7 @@
                         <label>Прочее расходы</label>
 
                         <div class="input-group">
-                            <input type="text" class="form-control" name="otherExpenses" value=${otherExpenses}>
+                            <input type="text" class="form-control" id="otherExpenses" value=${otherExpenses}>
                             <span class="input-group-addon">руб.</span>
                         </div>
                     </div>
@@ -192,34 +192,24 @@
                         <label>Цена продажи (рыночная)</label>
 
                         <div class="input-group">
-                            <input type="text" class="form-control" name="sellingPrice" value=${sellingPrice}>
+                            <input type="text" class="form-control" id="sellingPrice" value=${sellingPrice}>
                             <span class="input-group-addon">руб.</span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>${cost1km}</label>
+                        <label id="cost1km">${cost1km}</label>
                     </div>
                 </div>
-                <button class="btn btn-primary">Отправить</button>
             </div>
             <div class="col-md-4"></div>
         </div>
     </form>
 </div>
 
-<script>
-    $(document).ready(function(){
-        $(".xz3").change(function(){
-            $.post('/s', 'aaa=5', onAjaxSuccess);
-            function onAjaxSuccess(data)
-            {
-                // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
-                alert(data);
-            }
-        });
-    });
+<script src='js/controller.js'></script>
 
+<script>
     var app = angular.module('myApp', []);
     app.controller('personCtrl', function ($scope) {
         $scope.person = {

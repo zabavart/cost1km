@@ -2,6 +2,16 @@ package servlets;
 
 import database.DbConnection;
 import database.Query;
+import model.Cost1kmModel;
+import utils.Util;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,89 +19,85 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
 @WebServlet("/s")
 public class Cost1kmServlet extends HttpServlet {
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        System.out.println("POST1 POST POST");
-        System.out.println(request.getParameterMap().entrySet());
-        System.out.println(request.getParameter("aaa"));
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    response.setContentType("application/json");
 
-        int price = Integer.parseInt(request.getParameter("price"));
-        int milesOn = Integer.parseInt(request.getParameter("milesOn"));
-        int benzine = Integer.parseInt(request.getParameter("benzine"));
-        int otherExpenses = Integer.parseInt(request.getParameter("otherExpenses"));
-        int sellingPrice = Integer.parseInt(request.getParameter("sellingPrice"));
+    Cost1kmModel model = new Cost1kmModel();
+    model.setCarMark(Util.parseInt(request.getParameter("carMark")));
+    model.setCarModel(Util.parseInt(request.getParameter("carModel")));
+    model.setCarSerie(Util.parseInt(request.getParameter("carSerie")));
+    model.setCarModification(Util.parseInt(request.getParameter("carModification")));
+    model.setCost(Util.parseInt(request.getParameter("cost")));
+    model.setPrice(Util.parseInt(request.getParameter("price")));
+    model.setMilesOn(Util.parseInt(request.getParameter("milesOn")));
+    model.setBenzine(Util.parseInt(request.getParameter("benzine")));
+    model.setOtherExpenses(Util.parseInt(request.getParameter("otherExpenses")));
+    model.setSellingPrice(Util.parseInt(request.getParameter("sellingPrice")));
 
-        int cost = price + benzine + otherExpenses - sellingPrice;
-        Cost1km cost1km = new Cost1km(cost, milesOn);
+    System.out.println("!!!!!! " + model.getBenzine());
+    int cost = model.getPrice() + model.getBenzine() + model.getOtherExpenses() - model.getSellingPrice();
+    System.out.println("!!3434!!!!");
+    System.out.println(cost);
+    System.out.println(model.getMilesOn());
+    Cost1km cost1km = new Cost1km(cost, model.getMilesOn());
 
-        request.setAttribute("price", price);
-        request.setAttribute("milesOn", milesOn);
-        request.setAttribute("benzine", benzine);
-        request.setAttribute("otherExpenses", otherExpenses);
-        request.setAttribute("sellingPrice", sellingPrice);
-        request.setAttribute("cost1km", "Стоимость 1 км = " + cost1km.calc() + " руб.");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-        dispatcher.forward(request, response);
+    PrintWriter out = response.getWriter();
+    out.println(cost1km.calc()) ;
+    out.close();
+  }
+
+  @Override
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    response.setContentType("text/html");
+
+    request.setAttribute("price", 500000);
+    request.setAttribute("milesOn", 220000);
+    request.setAttribute("benzine", 400000);
+    request.setAttribute("otherExpenses", 200000);
+    request.setAttribute("sellingPrice", 300000);
+
+    try {
+      request.setAttribute("carMarkList", getCarMark());
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-
-        request.setAttribute("price", 500000);
-        request.setAttribute("milesOn", 220000);
-        request.setAttribute("benzine", 400000);
-        request.setAttribute("otherExpenses", 200000);
-        request.setAttribute("sellingPrice", 300000);
-
-        try {
-            request.setAttribute("carMarkList", getCarMark());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            request.setAttribute("carModelList", getCarModel());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-        dispatcher.forward(request, response);
+    try {
+      request.setAttribute("carModelList", getCarModel());
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
 
-    private ArrayList<String> getCarMark() throws SQLException {
-        DbConnection dbConnection = new DbConnection();
-        ResultSet result1 = dbConnection.getStatement().executeQuery(Query.car_mark);
-        ArrayList<String> list = new ArrayList<String>();
-        while (result1.next()) {
-            list.add(result1.getString("name"));
-        }
-        dbConnection.getStatement().close();
-        return list;
-    }
 
-    private ArrayList<String> getCarModel() throws SQLException {
-        DbConnection dbConnection = new DbConnection();
-        Statement statement = dbConnection.getStatement();
-        ResultSet result1 = statement.executeQuery(Query.car_model);
-        ArrayList<String> list = new ArrayList<String>();
-        while (result1.next()) {
-            list.add(result1.getString("name"));
-        }
-        statement.close();
-        return list;
+    RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+    dispatcher.forward(request, response);
+  }
+
+  private HashMap<String, String> getCarMark() throws SQLException {
+    DbConnection dbConnection = new DbConnection();
+    ResultSet result1 = dbConnection.getStatement().executeQuery(Query.car_mark);
+    HashMap<String, String> map = new HashMap<String, String>();
+    while (result1.next()) {
+      map.put(result1.getString("id_car_mark"), result1.getString("name"));
     }
+    dbConnection.getStatement().close();
+    return map;
+  }
+
+  private HashMap<String, String> getCarModel() throws SQLException {
+    DbConnection dbConnection = new DbConnection();
+    Statement statement = dbConnection.getStatement();
+    ResultSet result1 = statement.executeQuery(Query.car_model);
+    HashMap<String, String> map = new HashMap<String, String>();
+    while (result1.next()) {
+      map.put(result1.getString("id_car_model"), result1.getString("name"));
+    }
+    dbConnection.getStatement().close();
+    return map;
+  }
 }

@@ -1,23 +1,21 @@
 package crud;
 
-import entity.Car;
+import entity.CarMark;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
-import java.util.List;
-
-public class CarService {
+public class CarMarkService {
 
   public EntityManager em = Persistence.createEntityManagerFactory("COST1KM").createEntityManager();
 
-  public Car add(Car car) {
+  public CarMark add(CarMark carMark) {
     em.getTransaction().begin();
-    Car carFromDB = em.merge(car);
+    CarMark carMarkFromDB = em.merge(carMark);
     em.getTransaction().commit();
-    return carFromDB;
+    return carMarkFromDB;
   }
 
   public void delete(long id) {
@@ -26,18 +24,18 @@ public class CarService {
     em.getTransaction().commit();
   }
 
-  public Car get(long id) {
-    return em.find(Car.class, id);
+  public CarMark get(long id) {
+    return em.find(CarMark.class, id);
   }
 
-  public void update(Car car) {
+  public void update(CarMark carMark) {
     em.getTransaction().begin();
-    em.merge(car);
+    em.merge(carMark);
     em.getTransaction().commit();
   }
 
-  public List<Car> getAll() {
-    Query namedQuery = em.createNamedQuery("Car.getAll");
+  public List<CarMark> getAll() {
+    Query namedQuery = em.createNamedQuery("CarMark.getAll");
     return namedQuery.getResultList();
   }
 }

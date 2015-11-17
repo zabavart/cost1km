@@ -1,20 +1,19 @@
 package testing;
 
 
+import crud.CarMarkService;
 import crud.CarService;
 import entity.Car;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
+import entity.CarMark;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class CarServiceTest {
 
   CarService service = new CarService();
+  CarMarkService serviceMark = new CarMarkService();
 
   @Test
   public void testSaveRecord() throws Exception {
@@ -112,8 +111,16 @@ public class CarServiceTest {
 
 //    Выводим полученый список авто
     for(Car c : cars){
-      System.out.println(c);
+      System.out.println(c.getId() + " " + c.getName());
     }
   }
+  public void testCarMark(){
+    List<CarMark> cars = serviceMark.getAll();
 
+    for(CarMark c : cars){
+      System.out.println(c.getIdCarMark() + " " + c.getName());
+    }
+
+
+  }
 }

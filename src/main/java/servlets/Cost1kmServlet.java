@@ -1,7 +1,10 @@
 package servlets;
 
+import crud.CarMarkService;
+import crud.CarService;
 import database.DbConnection;
 import database.Query;
+import entity.CarMark;
 import model.Cost1kmModel;
 
 
@@ -65,9 +68,9 @@ public class Cost1kmServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     response.setContentType("text/html");
 
-    CarServiceTest carServiceTest = new CarServiceTest();
     try {
-      carServiceTest.testGetAll();
+      CarServiceTest carServiceTest = new CarServiceTest();
+      carServiceTest.testCarMark();
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -78,12 +81,7 @@ public class Cost1kmServlet extends HttpServlet {
     request.setAttribute("otherExpenses", 200000);
     request.setAttribute("sellingPrice", 300000);
 
-    try {
       request.setAttribute("carMarkList", getCarMark());
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
     try {
       request.setAttribute("carModelList", getCarModel());
     } catch (SQLException e) {
@@ -95,14 +93,14 @@ public class Cost1kmServlet extends HttpServlet {
     dispatcher.forward(request, response);
   }
 
-  private HashMap<String, String> getCarMark() throws SQLException {
-    DbConnection dbConnection = new DbConnection();
-    ResultSet result1 = dbConnection.getStatement().executeQuery(Query.car_mark);
+  private HashMap<String, String> getCarMark()  {
+    CarMarkService service = new CarMarkService();
+    List<CarMark> list = service.getAll();
     HashMap<String, String> map = new HashMap<String, String>();
-    while (result1.next()) {
-      map.put(result1.getString("id_car_mark"), result1.getString("name"));
+    for (CarMark carMark : list) {
+      map.put(String.valueOf(carMark.getIdCarMark()), carMark.getName());
     }
-    dbConnection.getStatement().close();
+
     return map;
   }
 

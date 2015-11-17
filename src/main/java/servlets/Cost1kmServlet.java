@@ -6,6 +6,7 @@ import model.Cost1kmModel;
 
 
 import org.json.simple.JSONObject;
+import testing.CarServiceTest;
 import utils.Util;
 
 import java.io.IOException;
@@ -63,6 +64,13 @@ public class Cost1kmServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     response.setContentType("text/html");
+
+    CarServiceTest carServiceTest = new CarServiceTest();
+    try {
+      carServiceTest.testGetAll();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
 
     request.setAttribute("price", 500000);
     request.setAttribute("milesOn", 220000);

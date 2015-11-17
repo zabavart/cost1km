@@ -4,8 +4,8 @@ import database.DbConnection;
 import database.Query;
 import model.Cost1kmModel;
 
-import org.json.simple.JSONObject;
 
+import org.json.simple.JSONObject;
 import utils.Util;
 
 import java.io.IOException;
@@ -56,7 +56,6 @@ public class Cost1kmServlet extends HttpServlet {
       e.printStackTrace();
     }
     PrintWriter out = response.getWriter();
-    System.out.println(resultJson.toString());
     out.println(resultJson);
     out.close();
   }

@@ -14,8 +14,11 @@ $('#mainForm').change(function () {
             sellingPrice: $('#sellingPrice').val()
         },
         function (data) {
-            $('#cost1km').text(data.cost1km);
-            //$('#carModel').text(data.carModel);
+            $('#cost1km').text('Стоимость 1 км ' + data.cost1km + ' руб.');
+            $('#carModel option').remove();
+            for (key in data.carModel) {
+                $('#carModel').append('<option value="' + key + '">' + data.carModel[key] + '</option>');
+            }
         });
 });
 

@@ -79,7 +79,7 @@
                     <li><a href="#">&raquo;</a></li>
                 </ul>
 
-                <div ng-app="myApp" ng-controller="personCtrl">
+                <div ng-app="myApp" ng-controller="creditCtrl">
 
                     <div class="checkbox">
                         <label>
@@ -211,11 +211,7 @@
 
 <script>
     var app = angular.module('myApp', []);
-    app.controller('personCtrl', function ($scope) {
-        $scope.person = {
-            firstName: "John",
-            lastName: "Doe"
-        };
+    app.controller('creditCtrl', function ($scope) {
         $scope.myVar = false;
         $scope.toggle = function () {
             $scope.myVar = !$scope.myVar;

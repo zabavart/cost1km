@@ -2,18 +2,14 @@ package servlets;
 
 import crud.CarModelService;
 import crud.CarMarkService;
-import entity.CarMark;
-import entity.CarModel;
 import model.Cost1kmModel;
 
-
 import org.json.simple.JSONObject;
+
 import utils.Util;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -29,8 +25,6 @@ public class Cost1kmServlet extends HttpServlet {
   private CarMarkService carMarkService;
   private CarModelService carModelService;
 
-
-
   public Cost1kmServlet() {
     EntityManager em = Persistence.createEntityManagerFactory("COST1KM").createEntityManager();
     carMarkService = new CarMarkService(em);
@@ -42,10 +36,10 @@ public class Cost1kmServlet extends HttpServlet {
     response.setContentType("application/json");
 
     Cost1kmModel model = new Cost1kmModel();
-    model.setCarMark(Util.parseInt(request.getParameter("carMark")));
-    model.setCarModel(Util.parseInt(request.getParameter("carModel")));
-    model.setCarSerie(Util.parseInt(request.getParameter("carSerie")));
-    model.setCarModification(Util.parseInt(request.getParameter("carModification")));
+    model.setCarMarkId(Util.parseInt(request.getParameter("carMarkId")));
+    model.setCarModelId(Util.parseInt(request.getParameter("carModelId")));
+    model.setCarSerieId(Util.parseInt(request.getParameter("carSerieId")));
+    model.setCarModificationId(Util.parseInt(request.getParameter("carModificationId")));
     model.setCost(Util.parseInt(request.getParameter("cost")));
     model.setPrice(Util.parseInt(request.getParameter("price")));
     model.setMilesOn(Util.parseInt(request.getParameter("milesOn")));
@@ -56,8 +50,14 @@ public class Cost1kmServlet extends HttpServlet {
     int cost = model.getPrice() + model.getBenzine() + model.getOtherExpenses() - model.getSellingPrice();
     Cost1km cost1km = new Cost1km(cost, model.getMilesOn());
 
+
     JSONObject jsonObject = new JSONObject();
     jsonObject.put("cost1km", cost1km.calc());
+    jsonObject.put("carMarkList", carMarkService.getAll());
+
+    if (model.getCarMarkId() != 0) {
+      jsonObject.put("carModelList", carModelService.getAllByCarMarkId(model.getCarMarkId()));
+    }
 
     PrintWriter out = response.getWriter();
     out.println(jsonObject);
@@ -74,40 +74,7 @@ public class Cost1kmServlet extends HttpServlet {
     request.setAttribute("otherExpenses", 200000);
     request.setAttribute("sellingPrice", 300000);
 
-    request.setAttribute("carMarkList", getCarMark());
-    request.setAttribute("carModelList", getCarModel());
-
     RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
     dispatcher.forward(request, response);
-  }
-
-  private HashMap<String, String> getCarMark()  {
-    List<CarMark> carMarkList = carMarkService.getAll();
-
-    HashMap<String, String> map = new HashMap<String, String>();
-    for (CarMark carMark : carMarkList) {
-      map.put(String.valueOf(carMark.getIdCarMark()), carMark.getName());
-    }
-
-    return map;
-  }
-
-  private HashMap<String, String> getCarModel()  {
-    List<CarModel> carModelList = carModelService.getAll();
-    HashMap<String, String> map = new HashMap<String, String>();
-    for (CarModel carModel : carModelList) {
-      map.put(String.valueOf(carModel.getIdCarModel()), carModel.getName());
-    }
-    return map;
-  }
-
-  private HashMap<String, String> getCarModel(int idCarMark)  {
-    HashMap<String, String> map = new HashMap<String, String>();
-//    List<CarModel> carModelList = carModelService.get(idCarMark);
-//    while (resultSet.next()) {
-//      map.put(resultSet.getString("id_car_model"), resultSet.getString("name"));
-//    }
-//    dbConnection.getStatement().close();
-    return map;
   }
 }

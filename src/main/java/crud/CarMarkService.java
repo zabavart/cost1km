@@ -1,5 +1,7 @@
 package crud;
 
+import org.json.simple.JSONObject;
+
 import entity.CarMark;
 import java.util.List;
 
@@ -38,8 +40,13 @@ public class CarMarkService {
     em.getTransaction().commit();
   }
 
-  public List<CarMark> getAll() {
+  public JSONObject getAll() {
     Query namedQuery = em.createNamedQuery("CarMark.getAll");
-    return namedQuery.getResultList();
+    List<CarMark> carMarkList = namedQuery.getResultList();
+    JSONObject jsonObject = new JSONObject();
+    for (CarMark carMark : carMarkList) {
+      jsonObject.put(carMark.getIdCarMark(), carMark.getName());
+    }
+    return jsonObject;
   }
 }

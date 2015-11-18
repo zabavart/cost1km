@@ -1,10 +1,10 @@
 package model;
 
 public class Cost1kmModel {
-  int carMark;
-  int carModel;
-  int carSerie;
-  int carModification;
+  int carMarkId;
+  int carModelId;
+  int carSerieId;
+  int carModificationId;
   int cost;
   int price;
   int milesOn;
@@ -12,36 +12,36 @@ public class Cost1kmModel {
   int otherExpenses;
   int sellingPrice;
 
-  public int getCarMark() {
-    return carMark;
+  public int getCarMarkId() {
+    return carMarkId;
   }
 
-  public void setCarMark(int carMark) {
-    this.carMark = carMark;
+  public void setCarMarkId(int carMarkId) {
+    this.carMarkId = carMarkId;
   }
 
-  public int getCarModel() {
-    return carModel;
+  public int getCarModelId() {
+    return carModelId;
   }
 
-  public void setCarModel(int carModel) {
-    this.carModel = carModel;
+  public void setCarModelId(int carModelId) {
+    this.carModelId = carModelId;
   }
 
-  public int getCarSerie() {
-    return carSerie;
+  public int getCarSerieId() {
+    return carSerieId;
   }
 
-  public void setCarSerie(int carSerie) {
-    this.carSerie = carSerie;
+  public void setCarSerieId(int carSerieId) {
+    this.carSerieId = carSerieId;
   }
 
-  public int getCarModification() {
-    return carModification;
+  public int getCarModificationId() {
+    return carModificationId;
   }
 
-  public void setCarModification(int carModification) {
-    this.carModification = carModification;
+  public void setCarModificationId(int carModificationId) {
+    this.carModificationId = carModificationId;
   }
 
   public int getCost() {

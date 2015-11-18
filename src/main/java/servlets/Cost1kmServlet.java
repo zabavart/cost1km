@@ -1,27 +1,22 @@
 package servlets;
 
+import crud.CarModelService;
 import crud.CarMarkService;
-import crud.CarService;
-import database.DbConnection;
-import database.Query;
 import entity.CarMark;
+import entity.CarModel;
 import model.Cost1kmModel;
 
 
 import org.json.simple.JSONObject;
-import testing.CarServiceTest;
 import utils.Util;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,6 +26,16 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/s")
 public class Cost1kmServlet extends HttpServlet {
+  private CarMarkService carMarkService;
+  private CarModelService carModelService;
+
+
+
+  public Cost1kmServlet() {
+    EntityManager em = Persistence.createEntityManagerFactory("COST1KM").createEntityManager();
+    carMarkService = new CarMarkService(em);
+    carModelService = new CarModelService(em);
+  }
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,16 +56,11 @@ public class Cost1kmServlet extends HttpServlet {
     int cost = model.getPrice() + model.getBenzine() + model.getOtherExpenses() - model.getSellingPrice();
     Cost1km cost1km = new Cost1km(cost, model.getMilesOn());
 
-    JSONObject resultJson = new JSONObject();
-    resultJson.put("cost1km", cost1km.calc());
+    JSONObject jsonObject = new JSONObject();
+    jsonObject.put("cost1km", cost1km.calc());
 
-    try {
-      resultJson.put("carModel", getCarModel(model.getCarMark()));
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
     PrintWriter out = response.getWriter();
-    out.println(resultJson);
+    out.println(jsonObject);
     out.close();
   }
 
@@ -68,64 +68,46 @@ public class Cost1kmServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     response.setContentType("text/html");
 
-    try {
-      CarServiceTest carServiceTest = new CarServiceTest();
-      carServiceTest.testCarMark();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-
     request.setAttribute("price", 500000);
     request.setAttribute("milesOn", 220000);
     request.setAttribute("benzine", 400000);
     request.setAttribute("otherExpenses", 200000);
     request.setAttribute("sellingPrice", 300000);
 
-      request.setAttribute("carMarkList", getCarMark());
-    try {
-      request.setAttribute("carModelList", getCarModel());
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-
+    request.setAttribute("carMarkList", getCarMark());
+    request.setAttribute("carModelList", getCarModel());
 
     RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
     dispatcher.forward(request, response);
   }
 
   private HashMap<String, String> getCarMark()  {
-    CarMarkService service = new CarMarkService();
-    List<CarMark> list = service.getAll();
+    List<CarMark> carMarkList = carMarkService.getAll();
+
     HashMap<String, String> map = new HashMap<String, String>();
-    for (CarMark carMark : list) {
+    for (CarMark carMark : carMarkList) {
       map.put(String.valueOf(carMark.getIdCarMark()), carMark.getName());
     }
 
     return map;
   }
 
-  private HashMap<String, String> getCarModel() throws SQLException {
-    DbConnection dbConnection = new DbConnection();
-    Statement statement = dbConnection.getStatement();
-    ResultSet resultSet = statement.executeQuery(Query.car_model);
+  private HashMap<String, String> getCarModel()  {
+    List<CarModel> carModelList = carModelService.getAll();
     HashMap<String, String> map = new HashMap<String, String>();
-    while (resultSet.next()) {
-      map.put(resultSet.getString("id_car_model"), resultSet.getString("name"));
+    for (CarModel carModel : carModelList) {
+      map.put(String.valueOf(carModel.getIdCarModel()), carModel.getName());
     }
-    dbConnection.getStatement().close();
     return map;
   }
 
-  private HashMap<String, String> getCarModel(int id_car_mark) throws SQLException {
-    DbConnection dbConnection = new DbConnection();
-    PreparedStatement preparedStatement = dbConnection.getConnection().prepareStatement(Query.car_model_by_id_car_model);
-    preparedStatement.setInt(1, id_car_mark);
-    ResultSet resultSet = preparedStatement.executeQuery();
+  private HashMap<String, String> getCarModel(int idCarMark)  {
     HashMap<String, String> map = new HashMap<String, String>();
-    while (resultSet.next()) {
-      map.put(resultSet.getString("id_car_model"), resultSet.getString("name"));
-    }
-    dbConnection.getStatement().close();
+//    List<CarModel> carModelList = carModelService.get(idCarMark);
+//    while (resultSet.next()) {
+//      map.put(resultSet.getString("id_car_model"), resultSet.getString("name"));
+//    }
+//    dbConnection.getStatement().close();
     return map;
   }
 }

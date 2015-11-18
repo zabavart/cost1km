@@ -6,10 +6,14 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 public class CarMarkService {
+  private EntityManager em;
 
-  public EntityManager em = Persistence.createEntityManagerFactory("COST1KM").createEntityManager();
+  public CarMarkService(EntityManager em) {
+    this.em = em;
+  }
 
   public CarMark add(CarMark carMark) {
     em.getTransaction().begin();

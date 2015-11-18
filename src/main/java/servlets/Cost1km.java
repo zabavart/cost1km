@@ -1,12 +1,7 @@
 package servlets;
 
-import database.DbConnection;
-import database.Query;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Cost1km {
     int cost;

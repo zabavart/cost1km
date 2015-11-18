@@ -1,21 +1,20 @@
 package entity;
 
-import java.util.Date;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "car_mark")
-@NamedQuery(name = "CarMark.getAll", query = "SELECT c from CarMark c")
+@NamedQuery(name = "CarMark.getAll", query = "select c from CarMark c")
+
 public class CarMark {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id_car_mark;
+  @Column(name = "id_car_mark", nullable = false, unique = true)
+  private long idCarMark;
 
   @Column(name = "name", length = 32)
-  private String name;      //Название авто
-
+  private String name;
 
   public CarMark(String name) {
     this.name = name;
@@ -25,11 +24,11 @@ public class CarMark {
   }
 
   public long getIdCarMark() {
-    return id_car_mark;
+    return idCarMark;
   }
 
-  public void setId_car_mark(long id_car_mark) {
-    this.id_car_mark = id_car_mark;
+  public void setIdCarMark(long idCarMark) {
+    this.idCarMark = idCarMark;
   }
 
   public String getName() {
@@ -40,3 +39,4 @@ public class CarMark {
     this.name = name;
   }
 }
+

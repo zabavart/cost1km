@@ -36,24 +36,28 @@ $('#mainForm').change(function () {
                 for (key in data.carMarkList) {
                     $('#carMark').append('<option value="' + key + '">' + data.carMarkList[key] + '</option>');
                 }
+                $("#carMark").val($("#select option:first").val());
             }
 
             if ($('#carModel').val() == null) {
                 for (key in data.carModelList) {
                     $('#carModel').append('<option value="' + key + '">' + data.carModelList[key] + '</option>');
                 }
+                $("#carModel").val($("#select option:first").val());
             }
 
             if ($('#carSerie').val() == null) {
                 for (key in data.carSerieList) {
                     $('#carSerie').append('<option value="' + key + '">' + data.carSerieList[key] + '</option>');
                 }
+                $("#carSerie").val($("#select option:first").val());
             }
 
-            if ($('#carSerie').val() == null) {
+            if ($('#carModification').val() == null) {
                 for (key in data.carModificationList) {
                     $('#carModification').append('<option value="' + key + '">' + data.carModificationList[key] + '</option>');
                 }
+                $("#carModification").val($("#select option:first").val());
             }
         });
 });

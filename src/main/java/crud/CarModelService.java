@@ -34,10 +34,6 @@ public class CarModelService {
     return em.find(CarModel.class, id);
   }
 
-  public CarModel getByIdCarMark(long idCarMark) {
-    return em.find(CarModel.class, idCarMark);
-  }
-
   public void update(CarModel carModel) {
     em.getTransaction().begin();
     em.merge(carModel);
@@ -59,7 +55,6 @@ public class CarModelService {
     List<CarModel> carModelist = namedQuery.getResultList();
     JSONObject jsonObject = new JSONObject();
     for (CarModel carModel : carModelist) {
-      System.out.println(carModel.getName());
       jsonObject.put(carModel.getIdCarModel(), carModel.getName());
     }
     return jsonObject;

@@ -1,3 +1,12 @@
+$('#carMark').change(function () {
+    $('#carModel option').remove();
+    $('#carSerie option').remove();
+});
+
+$('#carModel').change(function () {
+    $('#carSerie option').remove();
+});
+
 $('#mainForm').change(function () {
     $.post(
         '/s',
@@ -24,9 +33,14 @@ $('#mainForm').change(function () {
             }
 
             if ($('#carModel').val() == null) {
-                $('#carModel option').remove();
                 for (key in data.carModelList) {
                     $('#carModel').append('<option value="' + key + '">' + data.carModelList[key] + '</option>');
+                }
+            }
+
+            if ($('#carSerie').val() == null) {
+                for (key in data.carSerieList) {
+                    $('#carSerie').append('<option value="' + key + '">' + data.carSerieList[key] + '</option>');
                 }
             }
         });

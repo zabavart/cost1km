@@ -13,7 +13,13 @@ $('#carSerie').change(function () {
     $('#carModification option').remove();
 });
 
+controller();
+
 $('#mainForm').change(function () {
+    controller();
+});
+
+function controller() {
     $.post(
         '/s',
         {
@@ -59,6 +65,6 @@ $('#mainForm').change(function () {
                 }
                 $("#carModification").val($("#select option:first").val());
             }
-        });
-});
-
+        }
+    );
+}

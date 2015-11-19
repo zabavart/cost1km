@@ -11,7 +11,7 @@ public class CarMark {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id_car_mark", nullable = false, unique = true)
-  private long idCarMark;
+  private Integer idCarMark;
 
   @Column(name = "name", length = 32)
   private String name;
@@ -23,11 +23,11 @@ public class CarMark {
   public CarMark() {
   }
 
-  public long getIdCarMark() {
+  public Integer getIdCarMark() {
     return idCarMark;
   }
 
-  public void setIdCarMark(long idCarMark) {
+  public void setIdCarMark(Integer idCarMark) {
     this.idCarMark = idCarMark;
   }
 

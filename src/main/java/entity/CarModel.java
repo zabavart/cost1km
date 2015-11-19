@@ -18,10 +18,10 @@ public class CarModel {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id_car_model", nullable = false, unique = true)
-  private int idCarModel;
+  private Integer idCarModel;
 
   @Column(name = "id_car_mark")
-  private int idCarMark;
+  private Integer idCarMark;
 
   @Column(name = "name", length = 255)
   private String name;
@@ -33,19 +33,19 @@ public class CarModel {
   public CarModel() {
   }
 
-  public int getIdCarModel() {
+  public Integer getIdCarModel() {
     return idCarModel;
   }
 
-  public void setIdCarModel(int idCarModel) {
+  public void setIdCarModel(Integer idCarModel) {
     this.idCarModel = idCarModel;
   }
 
-  public int getIdCarMark() {
+  public Integer getIdCarMark() {
     return idCarMark;
   }
 
-  public void setIdCarMark(int idCarMark) {
+  public void setIdCarMark(Integer idCarMark) {
     this.idCarMark = idCarMark;
   }
 

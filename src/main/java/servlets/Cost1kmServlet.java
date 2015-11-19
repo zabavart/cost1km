@@ -2,6 +2,7 @@ package servlets;
 
 import crud.CarModelService;
 import crud.CarMarkService;
+import crud.CarModificationService;
 import crud.CarSerieService;
 import model.Cost1kmModel;
 
@@ -26,12 +27,14 @@ public class Cost1kmServlet extends HttpServlet {
   private CarMarkService carMarkService;
   private CarModelService carModelService;
   private CarSerieService carSerieService;
+  private CarModificationService carModificationService;
 
   public Cost1kmServlet() {
     EntityManager em = Persistence.createEntityManagerFactory("COST1KM").createEntityManager();
     carMarkService = new CarMarkService(em);
     carModelService = new CarModelService(em);
     carSerieService = new CarSerieService(em);
+    carModificationService = new CarModificationService(em);
   }
 
   @Override
@@ -64,6 +67,10 @@ public class Cost1kmServlet extends HttpServlet {
 
     if (model.getCarModelId() != 0) {
       jsonObject.put("carSerieList", carSerieService.getAllByCarModelId(model.getCarModelId()));
+    }
+
+    if (model.getCarSerieId() != 0) {
+      jsonObject.put("carModificationList", carModificationService.getAllByCarSerieId(model.getCarSerieId()));
     }
 
     PrintWriter out = response.getWriter();

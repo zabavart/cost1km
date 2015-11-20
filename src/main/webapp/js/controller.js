@@ -3,6 +3,7 @@ $('#carGroup').hide();
 $('#isCredit').hide();
 $('#creditGroup').hide();
 $('#costGroup').hide();
+$('#carMiniInfo').hide();
 
 $('#carMark').change(function () {
     $('#carModel option').remove();
@@ -32,6 +33,13 @@ $('#yearPeriod').change(function () {
 $('#carModification').change(function () {
     $('#isCredit').show();
     $('#costGroup').show();
+    $('#carGroup').hide();
+    $('#carMiniInfo').show();
+    var mark = $('#carMark option:selected').text();
+    var model = $('#carModel option:selected').text();
+    var serie = $('#carSerie option:selected').text();
+    var modification = $('#carModification option:selected').text();
+    $('#carMiniInfo').text('Марка '+ mark + ' Модель ' + model + ' Серия ' + serie + ' Модификация ' + modification);
 });
 
 $('#isCredit').change(function () {

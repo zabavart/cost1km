@@ -62,7 +62,7 @@
                     </div>
                 </div>
 
-                <ul class="pagination" id ="years">
+                <ul class="pagination" id="years">
                     <li><a href="#">&laquo;</a></li>
                     <li><a href="#">2015</a></li>
                     <li><a href="#">2014</a></li>
@@ -71,6 +71,11 @@
                     <li><a href="#">2011</a></li>
                     <li><a href="#">&raquo;</a></li>
                 </ul>
+
+                <div class="alert alert-success alert-dismissable" id="carMiniInfo">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Better check yourself, you're not looking too good.
+                </div>
 
                 <div id="carGroup">
                     <div class="form-group">

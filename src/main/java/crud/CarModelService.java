@@ -54,6 +54,7 @@ public class CarModelService {
     Query namedQuery = em.createNamedQuery("CarModel.getAllByCarMarkId").setParameter("id_car_mark", carMarkId);
     List<CarModel> carModelist = namedQuery.getResultList();
     JSONObject jsonObject = new JSONObject();
+
     for (CarModel carModel : carModelist) {
       jsonObject.put(carModel.getIdCarModel(), carModel.getName());
     }

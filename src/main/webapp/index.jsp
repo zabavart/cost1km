@@ -17,7 +17,6 @@
 
 <body>
 
-
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -51,25 +50,19 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
+
                 <div class="row">
                     <div class="radio">
                         <div class="col-md-6">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1"
-                                       value="option1">
-                                За весь период
-                            </label>
+                            <label><input type="radio" name="optionsRadios" id="allPeriod">За весь период</label>
                         </div>
-                        <div class="col-md-6">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2"
-                                       value="option2">
-                                По годам
-                            </label>
+                        <div class=col-md-6">
+                            <label><input type="radio" name="optionsRadios" id="yearPeriod">По годам</label>
                         </div>
                     </div>
                 </div>
-                <ul class="pagination">
+
+                <ul class="pagination" id ="years">
                     <li><a href="#">&laquo;</a></li>
                     <li><a href="#">2015</a></li>
                     <li><a href="#">2014</a></li>
@@ -79,14 +72,7 @@
                     <li><a href="#">&raquo;</a></li>
                 </ul>
 
-                <div ng-app="myApp" ng-controller="creditCtrl">
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" ng-click="toggle()"> машина в кредит?
-                        </label>
-                    </div>
-
+                <div id="carGroup">
                     <div class="form-group">
                         <label>Марка</label>
                         <select class="form-control" id="carMark">
@@ -109,49 +95,58 @@
                         <label>Серия</label>
                         <select class="form-control" id="carSerie"></select>
                     </div>
+
                     <div class="form-group">
                         <label>Модификация</label>
                         <select class="form-control" id="carModification"></select>
                     </div>
+                </div>
 
-                    <div ng-show="myVar">
-                        <div class="form-group">
-                            <label>Процентная ставка</label>
+                <div class="checkbox" id="isCredit">
+                    <label>
+                        <input type="checkbox" id="isCreditCheckbox">машина в кредит?
+                    </label>
+                </div>
 
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="cost">
-                                <span class="input-group-addon">%</span>
-                            </div>
-                        </div>
+                <div id="creditGroup">
+                    <div class="form-group">
+                        <label>Процентная ставка</label>
 
-                        <div class="form-group">
-                            <label>Сумма кредита</label>
-
-                            <div class="input-group">
-                                <input type="text" class="form-control">
-                                <span class="input-group-addon">руб.</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Срок</label>
-
-                            <div class="input-group">
-                                <input type="text" class="form-control">
-                                <span class="input-group-addon">месяцев</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Переплата</label>
-
-                            <div class="input-group">
-                                <input type="text" class="form-control">
-                                <span class="input-group-addon">руб.</span>
-                            </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="cost">
+                            <span class="input-group-addon">%</span>
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label>Сумма кредита</label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-addon">руб.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Срок</label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-addon">месяцев</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Переплата</label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-addon">руб.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="costGroup">
                     <div class="form-group">
                         <label>Цена авто</label>
 
@@ -207,18 +202,7 @@
     </form>
 </div>
 
-<script src='js/controller.js'></script>
-
-<script>
-    var app = angular.module('myApp', []);
-    app.controller('creditCtrl', function ($scope) {
-        $scope.myVar = false;
-        $scope.toggle = function () {
-            $scope.myVar = !$scope.myVar;
-        };
-    });
-</script>
-
+<script src="js/controller.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
 </body>

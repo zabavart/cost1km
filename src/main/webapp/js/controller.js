@@ -39,7 +39,7 @@ $('#carModification').change(function () {
     var model = $('#carModel option:selected').text();
     var serie = $('#carSerie option:selected').text();
     var modification = $('#carModification option:selected').text();
-    $('#carMiniInfo').text('Марка '+ mark + ' Модель ' + model + ' Серия ' + serie + ' Модификация ' + modification);
+    $('#carMiniInfo').html('<strong>Модель:</strong> ' + serie + ' ' + modification);
 });
 
 $('#isCredit').change(function () {

@@ -47,10 +47,10 @@
     </div>
 
     <form role="form" method="post" id="mainForm">
+
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-4">
-
+            <div class="col-md-6">
                 <div class="row">
                     <div class="radio">
                         <div class="col-md-6">
@@ -71,11 +71,24 @@
                     <li><a href="#">2011</a></li>
                     <li><a href="#">&raquo;</a></li>
                 </ul>
+            </div>
+        </div>
 
-                <div class="alert alert-success alert-dismissable" id="carMiniInfo">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Better check yourself, you're not looking too good.
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="alert alert-warning alert-dismissible fade in text-center" id="carMiniInfo">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
 
                 <div id="carGroup">
                     <div class="form-group">

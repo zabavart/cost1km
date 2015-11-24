@@ -56,9 +56,13 @@ $('#mainForm').change(function () {
     controller();
 });
 
+$( "#save" ).click(function() {
+    save();
+});
+
 function controller() {
     $.post(
-        '/s',
+        '/calc',
         {
             carMarkId: $('#carMark').val(),
             carModelId: $('#carModel').val(),
@@ -104,5 +108,22 @@ function controller() {
             }
         }
     );
+}
+
+function save() {
+    $.post(
+        '/cars',
+        {
+            carMarkId: $('#carMark').val(),
+            carModelId: $('#carModel').val(),
+            carSerieId: $('#carSerie').val(),
+            carModificationId: $('#carModification').val(),
+            cost: $('#cost').val(),
+            price: $('#price').val(),
+            milesOn: $('#milesOn').val(),
+            benzine: $('#benzine').val(),
+            otherExpenses: $('#otherExpenses').val(),
+            sellingPrice: $('#sellingPrice').val()
+        });
 }
 

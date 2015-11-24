@@ -20,24 +20,18 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target=".navbar-collapse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="#">Cost1km</a>
         </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+        <div class="collapse navbar-collapse"></div>
     </div>
 </div>
+
 <div class="container">
 
     <div class="starter-template">
@@ -213,6 +207,16 @@
                     <div class="form-group">
                         <label id="cost1km">${cost1km}</label>
                     </div>
+
+                    <div class="form-group">
+                        <label>Номер машины</label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="carNumber">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" id="save">Сохранить</button>
                 </div>
             </div>
             <div class="col-md-4"></div>

@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/s")
+@WebServlet("/calc")
 public class Cost1kmServlet extends HttpServlet {
   private CarMarkService carMarkService;
   private CarModelService carModelService;

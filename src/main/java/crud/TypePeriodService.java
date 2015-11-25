@@ -4,10 +4,10 @@ import entity.TypePeriod;
 
 import javax.persistence.EntityManager;
 
-public class CostService {
+public class TypePeriodService {
   private EntityManager em;
 
-  public CostService(EntityManager em) {
+  public TypePeriodService(EntityManager em) {
     this.em = em;
   }
 

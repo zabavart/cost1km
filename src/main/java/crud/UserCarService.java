@@ -1,21 +1,22 @@
 package crud;
 
-import entity.TypePeriod;
+import entity.User;
+import entity.UserCar;
 
 import javax.persistence.EntityManager;
 
-public class CostService {
+public class UserCarService {
   private EntityManager em;
 
-  public CostService(EntityManager em) {
+  public UserCarService(EntityManager em) {
     this.em = em;
   }
 
-  public TypePeriod add(TypePeriod typePeriod) {
+  public UserCar add(UserCar userCar) {
     em.getTransaction().begin();
-    TypePeriod periodFromDB = em.merge(typePeriod);
+    UserCar userCarFromDB = em.merge(userCar);
     em.getTransaction().commit();
-    return periodFromDB;
+    return userCarFromDB;
   }
 
   public void delete(long id) {
@@ -24,13 +25,13 @@ public class CostService {
     em.getTransaction().commit();
   }
 
-  public TypePeriod get(long id) {
-    return em.find(TypePeriod.class, id);
+  public UserCar get(long id) {
+    return em.find(UserCar.class, id);
   }
 
-  public void update(TypePeriod typePeriod) {
+  public void update(UserCar userCar) {
     em.getTransaction().begin();
-    em.merge(typePeriod);
+    em.merge(userCar);
     em.getTransaction().commit();
   }
 }

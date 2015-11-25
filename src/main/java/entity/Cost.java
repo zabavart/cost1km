@@ -8,11 +8,17 @@ public class Cost {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id_cost", nullable = false, unique = true)
-  private Integer idCost;
+  @Column(name = "id", nullable = false, unique = true)
+  private Integer id;
 
-  @Column(name = "car_price")
-  private Integer carPrice;
+  @Column(name = "period_id")
+  private Integer periodId;
+
+  @Column(name = "price")
+  private Integer price;
+
+  @Column(name = "selling_price")
+  private Integer sellingPrice;
 
   @Column(name = "miles_on")
   private Integer milesOn;
@@ -20,21 +26,66 @@ public class Cost {
   @Column(name = "benzine")
   private Integer benzine;
 
+  @Column(name = "repairs")
+  private Integer repairs;
+
+  @Column(name = "service")
+  private Integer service;
+
+  @Column(name = "credit")
+  private Integer credit;
+
+  @Column(name = "kasko")
+  private Integer kasko;
+
+  @Column(name = "osago")
+  private Integer osago;
+
+  @Column(name = "tax")
+  private Integer tax;
+
+  @Column(name = "penalty")
+  private Integer penalty;
+
+  @Column(name = "parking")
+  private Integer parking;
+
   @Column(name = "other_expenses")
   private Integer otherExpenses;
-
-  @Column(name = "selling_price")
-  private Integer sellingPrice;
 
   public Cost() {
   }
 
-  public Integer getCarPrice() {
-    return carPrice;
+  public Integer getId() {
+    return id;
   }
 
-  public void setCarPrice(Integer carPrice) {
-    this.carPrice = carPrice;
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public Integer getPeriodId() {
+    return periodId;
+  }
+
+  public void setPeriodId(Integer periodId) {
+    this.periodId = periodId;
+  }
+
+  public Integer getPrice() {
+    return price;
+  }
+
+  public void setPrice(Integer price) {
+    this.price = price;
+  }
+
+  public Integer getSellingPrice() {
+    return sellingPrice;
+  }
+
+  public void setSellingPrice(Integer sellingPrice) {
+    this.sellingPrice = sellingPrice;
   }
 
   public Integer getMilesOn() {
@@ -53,20 +104,76 @@ public class Cost {
     this.benzine = benzine;
   }
 
+  public Integer getRepairs() {
+    return repairs;
+  }
+
+  public void setRepairs(Integer repairs) {
+    this.repairs = repairs;
+  }
+
+  public Integer getService() {
+    return service;
+  }
+
+  public void setService(Integer service) {
+    this.service = service;
+  }
+
+  public Integer getCredit() {
+    return credit;
+  }
+
+  public void setCredit(Integer credit) {
+    this.credit = credit;
+  }
+
+  public Integer getKasko() {
+    return kasko;
+  }
+
+  public void setKasko(Integer kasko) {
+    this.kasko = kasko;
+  }
+
+  public Integer getOsago() {
+    return osago;
+  }
+
+  public void setOsago(Integer osago) {
+    this.osago = osago;
+  }
+
+  public Integer getTax() {
+    return tax;
+  }
+
+  public void setTax(Integer tax) {
+    this.tax = tax;
+  }
+
+  public Integer getPenalty() {
+    return penalty;
+  }
+
+  public void setPenalty(Integer penalty) {
+    this.penalty = penalty;
+  }
+
+  public Integer getParking() {
+    return parking;
+  }
+
+  public void setParking(Integer parking) {
+    this.parking = parking;
+  }
+
   public Integer getOtherExpenses() {
     return otherExpenses;
   }
 
-  public void setOtherExpenses(Integer other_expenses) {
-    this.otherExpenses = other_expenses;
-  }
-
-  public Integer getSellingPrice() {
-    return sellingPrice;
-  }
-
-  public void setSellingPrice(Integer sellingPrice) {
-    this.sellingPrice = sellingPrice;
+  public void setOtherExpenses(Integer otherExpenses) {
+    this.otherExpenses = otherExpenses;
   }
 }
 

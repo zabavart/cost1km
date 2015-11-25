@@ -1,19 +1,19 @@
 package crud;
 
-import entity.TypePeriod;
+import entity.Period;
 
 import javax.persistence.EntityManager;
 
-public class CostService {
+public class PeriodService {
   private EntityManager em;
 
-  public CostService(EntityManager em) {
+  public PeriodService(EntityManager em) {
     this.em = em;
   }
 
-  public TypePeriod add(TypePeriod typePeriod) {
+  public Period add(Period period) {
     em.getTransaction().begin();
-    TypePeriod periodFromDB = em.merge(typePeriod);
+    Period periodFromDB = em.merge(period);
     em.getTransaction().commit();
     return periodFromDB;
   }
@@ -24,13 +24,13 @@ public class CostService {
     em.getTransaction().commit();
   }
 
-  public TypePeriod get(long id) {
-    return em.find(TypePeriod.class, id);
+  public Period get(long id) {
+    return em.find(Period.class, id);
   }
 
-  public void update(TypePeriod typePeriod) {
+  public void update(Period period) {
     em.getTransaction().begin();
-    em.merge(typePeriod);
+    em.merge(period);
     em.getTransaction().commit();
   }
 }

@@ -1,9 +1,9 @@
 package servlets;
 
-import crud.CostService;
-import crud.UserService;
-import entity.Cost;
-import entity.User;
+import crud.*;
+import entity.*;
+import model.Cost1kmModel;
+import utils.Util;
 
 import java.io.IOException;
 
@@ -19,23 +19,28 @@ import javax.servlet.http.HttpServletResponse;
 public class SaveServlet extends HttpServlet {
   CostService costService;
   UserService userService;
+  PeriodService periodService;
+  TypePeriodService typePeriodServic;
+  UserCarService userCarService;
+
+  public SaveServlet() {
+    EntityManager em = Persistence.createEntityManagerFactory("COST1KM").createEntityManager();
+
+    typePeriodServic = new TypePeriodService(em);
+    periodService = new PeriodService(em);
+
+
+
+  }
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    EntityManager em = Persistence.createEntityManagerFactory("COST1KM").createEntityManager();
-    costService = new CostService(em);
-    userService = new UserService(em);
+    System.out.println("!!! " + typePeriodServic.get(33));
 
-    User user = new User();
-    user.setName("test");
-    userService.add(user);
-//    Cost cost = new Cost();
-//    cost.setBenzine(1);
-//    cost.setCarPrice(2);
-//    cost.setMilesOn(3);
-//    cost.setOtherExpenses(4);
-//    cost.setSellingPrice(5);
-//    costService.add(cost);
+    Period period = new Period();
+    period.setTypePeriodId(33);
+    period.setUserCarId(Integer.valueOf(request.getParameter("carSerieId")));
+    periodService.add(period);
   }
 
   @Override

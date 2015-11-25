@@ -11,11 +11,11 @@ public class TypePeriod {
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
 
-  @Column(name = "user_car_id")
-  private Integer userCarId;
+  @Column(name = "ident", length = 32)
+  private String ident;
 
-  @Column(name = "type_period_id")
-  private Integer typePeriodId;
+  @Column(name = "name", length = 32)
+  private String name;
 
   public TypePeriod() {
   }
@@ -28,20 +28,20 @@ public class TypePeriod {
     this.id = id;
   }
 
-  public Integer getUserCarId() {
-    return userCarId;
+  public String getIdent() {
+    return ident;
   }
 
-  public void setUserCarId(Integer userCarId) {
-    this.userCarId = userCarId;
+  public void setIdent(String ident) {
+    this.ident = ident;
   }
 
-  public Integer getTypePeriodId() {
-    return typePeriodId;
+  public String getName() {
+    return name;
   }
 
-  public void setTypePeriodId(Integer typePeriodId) {
-    this.typePeriodId = typePeriodId;
+  public void setName(String name) {
+    this.name = name;
   }
 }
 

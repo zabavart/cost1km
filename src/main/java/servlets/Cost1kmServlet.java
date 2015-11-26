@@ -46,7 +46,6 @@ public class Cost1kmServlet extends HttpServlet {
     model.setCarModelId(Util.parseInt(request.getParameter("carModelId")));
     model.setCarSerieId(Util.parseInt(request.getParameter("carSerieId")));
     model.setCarModificationId(Util.parseInt(request.getParameter("carModificationId")));
-    model.setCost(Util.parseInt(request.getParameter("cost")));
     model.setPrice(Util.parseInt(request.getParameter("price")));
     model.setMilesOn(Util.parseInt(request.getParameter("milesOn")));
     model.setBenzine(Util.parseInt(request.getParameter("benzine")));

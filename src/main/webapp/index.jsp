@@ -125,7 +125,7 @@
                         <%--<label>Процентная ставка</label>--%>
 
                         <%--<div class="input-group">--%>
-                            <%--<input type="text" class="form-control" id="cost">--%>
+                            <%--<input type="text" class="form-control">--%>
                             <%--<span class="input-group-addon">%</span>--%>
                         <%--</div>--%>
                     <%--</div>--%>
@@ -169,6 +169,15 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Цена продажи (рыночная)</label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="sellingPrice" value=${sellingPrice}>
+                            <span class="input-group-addon">руб.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label>Пробег</label>
 
                         <div class="input-group">
@@ -187,19 +196,82 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Прочее расходы</label>
+                        <label>Ремонт</label>
 
                         <div class="input-group">
-                            <input type="text" class="form-control" id="otherExpenses" value=${otherExpenses}>
+                            <input type="text" class="form-control" id="repairs" value=${repairs}>
                             <span class="input-group-addon">руб.</span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Цена продажи (рыночная)</label>
+                        <label>ТО</label>
 
                         <div class="input-group">
-                            <input type="text" class="form-control" id="sellingPrice" value=${sellingPrice}>
+                            <input type="text" class="form-control" id="service" value=${service}>
+                            <span class="input-group-addon">руб.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Переплата по кредиту</label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="credit" value=${credit}>
+                            <span class="input-group-addon">руб.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>КАСКО</label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="kasko" value=${kasko}>
+                            <span class="input-group-addon">руб.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>ОСАГО</label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="osago" value=${osago}>
+                            <span class="input-group-addon">руб.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Налоги</label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="tax" value=${tax}>
+                            <span class="input-group-addon">руб.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Штрафы</label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="penalty" value=${penalty}>
+                            <span class="input-group-addon">руб.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Парковка</label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="parking" value=${parking}>
+                            <span class="input-group-addon">руб.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Прочее расходы</label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="otherExpenses" value=${otherExpenses}>
                             <span class="input-group-addon">руб.</span>
                         </div>
                     </div>

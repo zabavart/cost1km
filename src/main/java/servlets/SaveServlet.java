@@ -45,6 +45,7 @@ public class SaveServlet extends HttpServlet {
     userCarService.merge(userCar);
 
     ArrayList<Period> periods = new ArrayList<Period>(); //todo подтягивать с клиента
+    periods.add(new Period());
     for (Period period : periods) {
       period.setId(34); //todo подтягивать с клиента
       period.setTypePeriodId(33); //todo подтягивать с клиента
@@ -54,20 +55,20 @@ public class SaveServlet extends HttpServlet {
       Cost cost = new Cost();
       cost.setId(40);
       //todo подтягивать с клиента
-//      cost.setPeriodId(Integer.valueOf(request.getParameter("periodId")));
-//      cost.setPrice(Integer.valueOf(request.getParameter("price")));
-//      cost.setSellingPrice(Integer.valueOf(request.getParameter("sellingPrice")));
-//      cost.setMilesOn(Integer.valueOf(request.getParameter("milesOn")));
-//      cost.setBenzine(Integer.valueOf(request.getParameter("benzine")));
-//      cost.setRepairs(Integer.valueOf(request.getParameter("repairs")));
-//      cost.setService(Integer.valueOf(request.getParameter("service")));
-//      cost.setCredit(Integer.valueOf(request.getParameter("credit")));
-//      cost.setKasko(Integer.valueOf(request.getParameter("kasko")));
-//      cost.setOsago(Integer.valueOf(request.getParameter("osago")));
-//      cost.setTax(Integer.valueOf(request.getParameter("tax")));
-//      cost.setPenalty(Integer.valueOf(request.getParameter("penalty")));
-//      cost.setParking(Integer.valueOf(request.getParameter("parking")));
-//      cost.setOtherExpenses(Integer.valueOf(request.getParameter("otherExpenses")));
+      cost.setPeriodId(34);
+      cost.setPrice(Integer.valueOf(request.getParameter("price")));
+      cost.setSellingPrice(Integer.valueOf(request.getParameter("sellingPrice")));
+      cost.setMilesOn(Integer.valueOf(request.getParameter("milesOn")));
+      cost.setBenzine(Integer.valueOf(request.getParameter("benzine")));
+      cost.setRepairs(Integer.valueOf(request.getParameter("repairs")));
+      cost.setService(Integer.valueOf(request.getParameter("service")));
+      cost.setCredit(Integer.valueOf(request.getParameter("credit")));
+      cost.setKasko(Integer.valueOf(request.getParameter("kasko")));
+      cost.setOsago(Integer.valueOf(request.getParameter("osago")));
+      cost.setTax(Integer.valueOf(request.getParameter("tax")));
+      cost.setPenalty(Integer.valueOf(request.getParameter("penalty")));
+      cost.setParking(Integer.valueOf(request.getParameter("parking")));
+      cost.setOtherExpenses(Integer.valueOf(request.getParameter("otherExpenses")));
       costService.merge(cost);
     }
   }

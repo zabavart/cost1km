@@ -11,20 +11,20 @@ public class PeriodService {
     this.em = em;
   }
 
-  public Period add(Period period) {
+  public Period merge(Period period) {
     em.getTransaction().begin();
     Period periodFromDB = em.merge(period);
     em.getTransaction().commit();
     return periodFromDB;
   }
 
-  public void delete(long id) {
+  public void delete(Integer id) {
     em.getTransaction().begin();
     em.remove(get(id));
     em.getTransaction().commit();
   }
 
-  public Period get(long id) {
+  public Period get(Integer id) {
     return em.find(Period.class, id);
   }
 

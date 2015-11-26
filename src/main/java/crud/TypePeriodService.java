@@ -18,13 +18,13 @@ public class TypePeriodService {
     return periodFromDB;
   }
 
-  public void delete(long id) {
+  public void delete(Integer id) {
     em.getTransaction().begin();
     em.remove(get(id));
     em.getTransaction().commit();
   }
 
-  public TypePeriod get(long id) {
+  public TypePeriod get(Integer id) {
     return em.find(TypePeriod.class, id);
   }
 

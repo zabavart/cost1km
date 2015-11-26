@@ -11,20 +11,20 @@ public class UserService {
     this.em = em;
   }
 
-  public User add(User user) {
+  public User merge(User user) {
     em.getTransaction().begin();
     User userFromDB = em.merge(user);
     em.getTransaction().commit();
     return userFromDB;
   }
 
-  public void delete(long id) {
+  public void delete(Integer id) {
     em.getTransaction().begin();
     em.remove(get(id));
     em.getTransaction().commit();
   }
 
-  public User get(long id) {
+  public User get(Integer id) {
     return em.find(User.class, id);
   }
 

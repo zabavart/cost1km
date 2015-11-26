@@ -12,20 +12,20 @@ public class UserCarService {
     this.em = em;
   }
 
-  public UserCar add(UserCar userCar) {
+  public UserCar merge(UserCar userCar) {
     em.getTransaction().begin();
     UserCar userCarFromDB = em.merge(userCar);
     em.getTransaction().commit();
     return userCarFromDB;
   }
 
-  public void delete(long id) {
+  public void delete(Integer id) {
     em.getTransaction().begin();
     em.remove(get(id));
     em.getTransaction().commit();
   }
 
-  public UserCar get(long id) {
+  public UserCar get(Integer id) {
     return em.find(UserCar.class, id);
   }
 

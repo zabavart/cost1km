@@ -1,9 +1,7 @@
 package servlets;
 
-import crud.CarModelService;
-import crud.CarMarkService;
-import crud.CarModificationService;
-import crud.CarSerieService;
+import crud.*;
+import entity.Cost;
 import model.Cost1kmModel;
 
 import org.json.simple.JSONObject;
@@ -28,6 +26,7 @@ public class Cost1kmServlet extends HttpServlet {
   private CarModelService carModelService;
   private CarSerieService carSerieService;
   private CarModificationService carModificationService;
+  private CostService costService;
 
   public Cost1kmServlet() {
     EntityManager em = Persistence.createEntityManagerFactory("COST1KM").createEntityManager();
@@ -35,6 +34,7 @@ public class Cost1kmServlet extends HttpServlet {
     carModelService = new CarModelService(em);
     carSerieService = new CarSerieService(em);
     carModificationService = new CarModificationService(em);
+    costService = new CostService(em);
   }
 
   @Override
@@ -81,11 +81,20 @@ public class Cost1kmServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     response.setContentType("text/html");
 
-    request.setAttribute("price", 500000);
-    request.setAttribute("milesOn", 220000);
-    request.setAttribute("benzine", 400000);
-    request.setAttribute("otherExpenses", 200000);
-    request.setAttribute("sellingPrice", 300000);
+    Cost cost = costService.get(40);
+    request.setAttribute("price", cost.getPrice());
+    request.setAttribute("sellingPrice", cost.getSellingPrice());
+    request.setAttribute("milesOn", cost.getMilesOn());
+    request.setAttribute("benzine", cost.getBenzine());
+    request.setAttribute("repairs", cost.getRepairs());
+    request.setAttribute("service", cost.getService());
+    request.setAttribute("credit", cost.getCredit());
+    request.setAttribute("kasko", cost.getKasko());
+    request.setAttribute("osago", cost.getOsago());
+    request.setAttribute("tax", cost.getTax());
+    request.setAttribute("penalty", cost.getPenalty());
+    request.setAttribute("parking", cost.getParking());
+    request.setAttribute("otherExpenses", cost.getOtherExpenses());
 
     RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
     dispatcher.forward(request, response);

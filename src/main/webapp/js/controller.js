@@ -118,12 +118,19 @@ function save() {
             carModelId: $('#carModel').val(),
             carSerieId: $('#carSerie').val(),
             carModificationId: $('#carModification').val(),
-            cost: $('#cost').val(),
             price: $('#price').val(),
+            sellingPrice: $('#sellingPrice').val(),
             milesOn: $('#milesOn').val(),
             benzine: $('#benzine').val(),
+            repairs: $('#repairs').val(),
+            service: $('#service').val(),
+            credit: $('#credit').val(),
+            kasko: $('#kasko').val(),
+            osago: $('#osago').val(),
+            tax: $('#tax').val(),
+            penalty: $('#penalty').val(),
+            parking: $('#parking').val(),
             otherExpenses: $('#otherExpenses').val(),
-            sellingPrice: $('#sellingPrice').val()
+            cost: $('#cost').val()
         });
 }
-

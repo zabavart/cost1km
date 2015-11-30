@@ -115,47 +115,47 @@
                 </div>
 
                 <%--<div class="checkbox" id="isCredit">--%>
-                    <%--<label>--%>
-                        <%--<input type="checkbox" id="isCreditCheckbox">машина в кредит?--%>
-                    <%--</label>--%>
+                <%--<label>--%>
+                <%--<input type="checkbox" id="isCreditCheckbox">машина в кредит?--%>
+                <%--</label>--%>
                 <%--</div>--%>
 
                 <%--<div id="creditGroup">--%>
-                    <%--<div class="form-group">--%>
-                        <%--<label>Процентная ставка</label>--%>
+                <%--<div class="form-group">--%>
+                <%--<label>Процентная ставка</label>--%>
 
-                        <%--<div class="input-group">--%>
-                            <%--<input type="text" class="form-control">--%>
-                            <%--<span class="input-group-addon">%</span>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
+                <%--<div class="input-group">--%>
+                <%--<input type="text" class="form-control">--%>
+                <%--<span class="input-group-addon">%</span>--%>
+                <%--</div>--%>
+                <%--</div>--%>
 
-                    <%--<div class="form-group">--%>
-                        <%--<label>Сумма кредита</label>--%>
+                <%--<div class="form-group">--%>
+                <%--<label>Сумма кредита</label>--%>
 
-                        <%--<div class="input-group">--%>
-                            <%--<input type="text" class="form-control">--%>
-                            <%--<span class="input-group-addon">руб.</span>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
+                <%--<div class="input-group">--%>
+                <%--<input type="text" class="form-control">--%>
+                <%--<span class="input-group-addon">руб.</span>--%>
+                <%--</div>--%>
+                <%--</div>--%>
 
-                    <%--<div class="form-group">--%>
-                        <%--<label>Срок</label>--%>
+                <%--<div class="form-group">--%>
+                <%--<label>Срок</label>--%>
 
-                        <%--<div class="input-group">--%>
-                            <%--<input type="text" class="form-control">--%>
-                            <%--<span class="input-group-addon">месяцев</span>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
+                <%--<div class="input-group">--%>
+                <%--<input type="text" class="form-control">--%>
+                <%--<span class="input-group-addon">месяцев</span>--%>
+                <%--</div>--%>
+                <%--</div>--%>
 
-                    <%--<div class="form-group">--%>
-                        <%--<label>Переплата</label>--%>
+                <%--<div class="form-group">--%>
+                <%--<label>Переплата</label>--%>
 
-                        <%--<div class="input-group">--%>
-                            <%--<input type="text" class="form-control">--%>
-                            <%--<span class="input-group-addon">руб.</span>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
+                <%--<div class="input-group">--%>
+                <%--<input type="text" class="form-control">--%>
+                <%--<span class="input-group-addon">руб.</span>--%>
+                <%--</div>--%>
+                <%--</div>--%>
                 <%--</div>--%>
 
                 <div id="costGroup">

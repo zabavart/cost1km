@@ -3,6 +3,7 @@ package servlets;
 import crud.*;
 import entity.*;
 import model.Cost1kmModel;
+import utils.DB;
 import utils.Util;
 
 import java.io.IOException;
@@ -18,21 +19,15 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/cars")
 public class SaveServlet extends HttpServlet {
-  UserService userService;
-  UserCarService userCarService;
-  PeriodService periodService;
-  CostService costService;
-
-  public SaveServlet() {
-    EntityManager em = Persistence.createEntityManagerFactory("COST1KM").createEntityManager();
-    userService = new UserService(em);
-    userCarService = new UserCarService(em);
-    periodService = new PeriodService(em);
-    costService = new CostService(em);
-  }
+  EntityManager em = DB.getEntityManager();
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    UserService userService = new UserService(em);
+    UserCarService userCarService = new UserCarService(em);
+    PeriodService periodService = new PeriodService(em);
+    CostService costService = new CostService(em);
+
     User user = new User();
     user.setId(17);//todo подтягивать с клиента
     user.setName("test");//todo подтягивать с клиента

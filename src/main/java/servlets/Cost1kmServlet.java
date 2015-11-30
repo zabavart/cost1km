@@ -6,6 +6,7 @@ import model.Cost1kmModel;
 
 import org.json.simple.JSONObject;
 
+import utils.DB;
 import utils.Util;
 
 import java.io.IOException;
@@ -22,24 +23,15 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/calc")
 public class Cost1kmServlet extends HttpServlet {
-  private CarMarkService carMarkService;
-  private CarModelService carModelService;
-  private CarSerieService carSerieService;
-  private CarModificationService carModificationService;
-  private CostService costService;
-
-  public Cost1kmServlet() {
-    EntityManager em = Persistence.createEntityManagerFactory("COST1KM").createEntityManager();
-    carMarkService = new CarMarkService(em);
-    carModelService = new CarModelService(em);
-    carSerieService = new CarSerieService(em);
-    carModificationService = new CarModificationService(em);
-    costService = new CostService(em);
-  }
+  private EntityManager em = DB.getEntityManager();
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     response.setContentType("application/json");
+    CarMarkService carMarkService = new CarMarkService(em);
+    CarModelService carModelService = new CarModelService(em);
+    CarSerieService carSerieService = new CarSerieService(em);
+    CarModificationService carModificationService = new CarModificationService(em);
 
     Cost1kmModel model = new Cost1kmModel();
     model.setCarMarkId(Util.parseInt(request.getParameter("carMarkId")));
@@ -81,6 +73,7 @@ public class Cost1kmServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     response.setContentType("text/html");
 
+    CostService costService = new CostService(em);
     Cost cost = costService.get(40);
     request.setAttribute("price", cost.getPrice());
     request.setAttribute("sellingPrice", cost.getSellingPrice());

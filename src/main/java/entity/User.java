@@ -22,9 +22,10 @@ public class User {
   @Column(name = "password", length = 32)
   private String password;
 
-//  @OneToMany(fetch = FetchType.EAGER, mappedBy = "user_car`")
-//  private Set<UserCar> UserCars;
-
+//  @OneToOne(optional = false)
+//  @JoinColumn(name="user_car_id", unique = true, nullable = false, updatable = false)
+//  private UserCar userCar;
+//
   public User() {
   }
 
@@ -60,12 +61,12 @@ public class User {
     this.password = password;
   }
 
-//  public Set<UserCar> getUserCars() {
-//    return UserCars;
+//  public UserCar getUserCar() {
+//    return userCar;
 //  }
 //
-//  public void setUserCars(Set<UserCar> userCars) {
-//    UserCars = userCars;
+//  public void setUserCar(UserCar userCar) {
+//    this.userCar = userCar;
 //  }
 }
 

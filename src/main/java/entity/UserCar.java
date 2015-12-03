@@ -20,8 +20,7 @@ public class UserCar {
   @Column(name = "car_id")
   private Integer carId;
 
-//  @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-//  @JoinColumn(name = "user_id", nullable = false)
+//  @OneToOne(optional = false, mappedBy="user")
 //  private User user;
 
   public UserCar() {

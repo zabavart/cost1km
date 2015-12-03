@@ -1,6 +1,8 @@
 package servlets;
 
 import crud.*;
+import entity.Author;
+import entity.Book;
 import entity.Cost;
 import model.Cost1kmModel;
 
@@ -32,6 +34,51 @@ public class CalcServlet extends HttpServlet {
     CarModelService carModelService = new CarModelService(em);
     CarSerieService carSerieService = new CarSerieService(em);
     CarModificationService carModificationService = new CarModificationService(em);
+
+    BookService bookService = new BookService(em);
+    System.out.println("!!!!! " + bookService.get(10).getAuthor().getName());
+
+//    AuthorService authorService = new AuthorService(em);
+//    Author author = new Author();
+//    author.setId(1);
+//    author.setName("Puhkin");
+//    author.setLastName("Alex");
+//    authorService.merge(author);
+//
+//    BookService bookService = new BookService(em);
+//    Book book = new Book();
+//    book.setId(10);
+//    book.setName("Ev_an");
+//    book.setAuthor(author);
+//    bookService.merge(book);
+//
+//    bookService = new BookService(em);
+//    book = new Book();
+//    book.setId(11);
+//    book.setName("Poltava");
+//    book.setAuthor(author);
+//    bookService.merge(book);
+//
+//    authorService = new AuthorService(em);
+//    author = new Author();
+//    author.setId(2);
+//    author.setName("Tolstoy");
+//    author.setLastName("Lev");
+//    authorService.merge(author);
+//
+//    bookService = new BookService(em);
+//    book = new Book();
+//    book.setId(12);
+//    book.setName("Voina i mir");
+//    book.setAuthor(author);
+//    bookService.merge(book);
+//
+//    bookService = new BookService(em);
+//    book = new Book();
+//    book.setId(13);
+//    book.setName("Anna Karenina");
+//    book.setAuthor(author);
+//    bookService.merge(book);
 
     Cost1kmModel model = new Cost1kmModel();
     model.setCarMarkId(Util.parseInt(request.getParameter("carMarkId")));

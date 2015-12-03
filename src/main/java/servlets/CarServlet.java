@@ -31,6 +31,6 @@ public class CarServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     UserCarService userCarService = new UserCarService(em);
-    System.out.println(userCarService.get());
+//    System.out.println(userCarService.get());
   }
 }

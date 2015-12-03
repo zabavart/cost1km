@@ -2,10 +2,7 @@ package crud;
 
 import entity.Cost;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 
 public class CostService {
   private EntityManager em;
@@ -25,12 +22,6 @@ public class CostService {
     em.getTransaction().begin();
     em.remove(get(id));
     em.getTransaction().commit();
-  }
-
-  public List<Cost> get() {
-    TypedQuery<Cost> namedQuery = em.createNamedQuery("Cost.getAll", Cost.class);
-    System.out.println("!!!!" + namedQuery.getResultList().size());
-    return namedQuery.getResultList();
   }
 
   public Cost get(Integer id) {

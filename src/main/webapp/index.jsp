@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -28,7 +27,14 @@
             </button>
             <a class="navbar-brand" href="#">Cost1km</a>
         </div>
-        <div class="collapse navbar-collapse"></div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active" id="openCar" data-toggle="modal" data-target="#myModal"><a>Открыть</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
     </div>
 </div>
 
@@ -87,20 +93,12 @@
                 <div id="carGroup">
                     <div class="form-group">
                         <label>Марка</label>
-                        <select class="form-control" id="carMark">
-                            <c:forEach items="${carMarkList}" var="entry">
-                                <option value=${entry.key}>${entry.value}</option>
-                            </c:forEach>
-                        </select>
+                        <select class="form-control" id="carMark"></select>
                     </div>
 
                     <div class="form-group">
                         <label>Модель</label>
-                        <select class="form-control" id="carModel">
-                            <c:forEach items="${carModelList}" var="entry">
-                                <option value=${entry.key}>${entry.value}</option>
-                            </c:forEach>
-                        </select>
+                        <select class="form-control" id="carModel"></select>
                     </div>
 
                     <div class="form-group">
@@ -286,6 +284,26 @@
             <div class="col-md-4"></div>
         </div>
     </form>
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Выбрать машину</h4>
+            </div>
+            <div class="modal-body" id="xz">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="openCarBtn" data-dismiss="modal">Open</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <script src="js/controller.js"></script>

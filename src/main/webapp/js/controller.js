@@ -43,7 +43,7 @@ $('#carModification').change(function () {
 });
 
 $('#isCredit').change(function () {
-    if ($("#isCreditCheckbox").prop("checked")) {
+    if ($('#isCreditCheckbox').prop('checked')) {
         $('#creditGroup').show();
     } else {
         $('#creditGroup').hide();
@@ -56,7 +56,7 @@ $('#mainForm').change(function () {
     controller();
 });
 
-$( "#save" ).click(function() {
+$('#save').click(function () {
     save();
 });
 
@@ -112,7 +112,7 @@ function controller() {
 
 function save() {
     $.post(
-        '/cars',
+        '/costs',
         {
             carMarkId: $('#carMark').val(),
             carModelId: $('#carModel').val(),
@@ -134,3 +134,20 @@ function save() {
             cost: $('#cost').val()
         });
 }
+
+
+
+$('#openCar').click(function() {
+    $.get(
+        '/costs',
+        {},
+        function (data) {
+
+        }
+    );
+});
+
+$('#openCarBtn').click(function() {
+    console.log('!!!!!!');
+    save();
+});

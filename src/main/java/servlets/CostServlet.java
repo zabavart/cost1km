@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/cars")
-public class SaveServlet extends HttpServlet {
+public class CostServlet extends HttpServlet {
   EntityManager em = DB.getEntityManager();
 
   @Override
@@ -70,5 +70,8 @@ public class SaveServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    UserCarService userCarService = new UserCarService(em);
+    userCarService.get();
+//    Cost cost = new Cost();
   }
 }

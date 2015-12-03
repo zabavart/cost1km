@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/calc")
-public class Cost1kmServlet extends HttpServlet {
+public class CalcServlet extends HttpServlet {
   private EntityManager em = DB.getEntityManager();
 
   @Override

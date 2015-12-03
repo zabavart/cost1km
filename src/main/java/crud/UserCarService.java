@@ -1,5 +1,6 @@
 package crud;
 
+import entity.CarMark;
 import entity.Cost;
 import entity.User;
 import entity.UserCar;
@@ -35,12 +36,11 @@ public class UserCarService {
   }
 
   public JSONObject get() {
-    Query namedQuery = em.createNamedQuery("Cost.get");
-    List<Cost> costList = namedQuery.getResultList();
+    Query namedQuery = em.createNamedQuery("UserCar.get");
+    List<UserCar> userCarList = namedQuery.getResultList();
     JSONObject jsonObject = new JSONObject();
-    for (Cost cost : costList) {
-      System.out.println("!!! " + cost.getBenzine() + " " + cost.getId());
-//      jsonObject.put(carModel.getIdCarModel(), carModel.getName());
+    for (UserCar userCar : userCarList) {
+//      jsonObject.put(userCar.getId(), userCar.getUser().getName());
     }
     return jsonObject;
   }

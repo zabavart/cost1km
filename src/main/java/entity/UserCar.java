@@ -1,10 +1,12 @@
 package entity;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user_car")
-@NamedQuery(name = "Cost.get", query = "SELECT c from Cost c")
+@NamedQuery(name = "UserCar.get", query = "SELECT uc from UserCar uc")
 public class UserCar {
 
   @Id
@@ -17,6 +19,10 @@ public class UserCar {
 
   @Column(name = "car_id")
   private Integer carId;
+
+//  @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+//  @JoinColumn(name = "user_id", nullable = false)
+//  private User user;
 
   public UserCar() {
   }
@@ -44,5 +50,13 @@ public class UserCar {
   public void setCarId(Integer carId) {
     this.carId = carId;
   }
+
+//  public User getUser() {
+//    return user;
+//  }
+//
+//  public void setUser(User user) {
+//    this.user = user;
+//  }
 }
 

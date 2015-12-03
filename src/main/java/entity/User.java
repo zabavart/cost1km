@@ -1,11 +1,8 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Set;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
@@ -25,6 +22,8 @@ public class User {
   @Column(name = "password", length = 32)
   private String password;
 
+//  @OneToMany(fetch = FetchType.EAGER, mappedBy = "user_car`")
+//  private Set<UserCar> UserCars;
 
   public User() {
   }
@@ -60,5 +59,13 @@ public class User {
   public void setPassword(String password) {
     this.password = password;
   }
+
+//  public Set<UserCar> getUserCars() {
+//    return UserCars;
+//  }
+//
+//  public void setUserCars(Set<UserCar> userCars) {
+//    UserCars = userCars;
+//  }
 }
 

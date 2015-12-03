@@ -70,8 +70,6 @@ public class CostServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    UserCarService userCarService = new UserCarService(em);
-//    userCarService.get();
-//    Cost cost = new Cost();
+
   }
 }

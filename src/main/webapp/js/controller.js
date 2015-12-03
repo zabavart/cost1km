@@ -139,7 +139,7 @@ function save() {
 
 $('#openCar').click(function() {
     $.get(
-        '/costs',
+        '/cars',
         {},
         function (data) {
 

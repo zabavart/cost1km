@@ -1,22 +1,24 @@
 package entity;
 
 
-    import java.util.Set;
+import java.util.Set;
 
-    import javax.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "author")
 public class Author {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "id", nullable = false, unique = true)
   private Integer id;
 
   @Column(name = "name")
   private String name;
 
-  @Column(name = "last_name")
-  private String lastName;
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "author")
+  private Set<Calculation> calculations;
 
   public Author() {
   }
@@ -37,22 +39,11 @@ public class Author {
     this.name = name;
   }
 
-  public String getLastName() {
-    return lastName;
+  public Set<Calculation> getCalculations() {
+    return calculations;
   }
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "author")
-  private Set<Book> books;
-
-  public Set<Book> getBooks() {
-    return books;
-  }
-
-  public void setBooks(Set<Book> books) {
-    this.books = books;
+  public void setCalculations(Set<Calculation> calculations) {
+    this.calculations = calculations;
   }
 }

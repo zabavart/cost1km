@@ -23,21 +23,21 @@ public class CostServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    UserService userService = new UserService(em);
-    UserCarService userCarService = new UserCarService(em);
+//    UserService userService = new UserService(em);
+//    UserCarService userCarService = new UserCarService(em);
     PeriodService periodService = new PeriodService(em);
     CostService costService = new CostService(em);
 
-    User user = new User();
-    user.setId(17);//todo подтягивать с клиента
-    user.setName("test");//todo подтягивать с клиента
-    userService.merge(user);
+//    User user = new User();
+//    user.setId(17);//todo подтягивать с клиента
+//    user.setName("test");//todo подтягивать с клиента
+//    userService.merge(user);
 
-    UserCar userCar = new UserCar();
-    userCar.setId(36); //todo подтягивать с клиента
-    userCar.setUserId(17); //todo подтягивать с клиента
-    userCar.setCarId(Integer.valueOf(request.getParameter("carSerieId")));
-    userCarService.merge(userCar);
+//    UserCar userCar = new UserCar();
+//    userCar.setId(36); //todo подтягивать с клиента
+//    userCar.setUserId(17); //todo подтягивать с клиента
+//    userCar.setCarId(Integer.valueOf(request.getParameter("carSerieId")));
+//    userCarService.merge(userCar);
 
     ArrayList<Period> periods = new ArrayList<Period>(); //todo подтягивать с клиента
     periods.add(new Period());

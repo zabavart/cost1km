@@ -135,11 +135,9 @@ function save() {
         });
 }
 
-
-
-$('#openCar').click(function() {
+$('#openCar').click(function () {
     $.get(
-        '/cars',
+        '/calculations',
         {},
         function (data) {
 
@@ -147,7 +145,7 @@ $('#openCar').click(function() {
     );
 });
 
-$('#openCarBtn').click(function() {
+$('#openCarBtn').click(function () {
     console.log('!!!!!!');
     save();
 });

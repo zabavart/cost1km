@@ -2,8 +2,10 @@ package servlets;
 
 import crud.AuthorService;
 import crud.CalculationService;
+import crud.CarModificationService;
 import entity.Author;
 import entity.Calculation;
+import entity.CarModification;
 import utils.DB;
 
 import java.io.IOException;
@@ -29,15 +31,19 @@ public class CalculationServlet extends HttpServlet {
 //    AuthorService authorService = new AuthorService(em);
 //    Author author = authorService.get(45);
 //
+//    CarModificationService carModificationService = new CarModificationService(em);
+//    CarModification carModification1 = carModificationService.get(5233);
+//    CarModification carModification2 = carModificationService.get(5860);
+//
 //    CalculationService calculationService = new CalculationService(em);
 //    Calculation calculation = new Calculation();
 //    calculation.setAuthor(author);
-//    calculation.setCarId(5233);
+//    calculation.setCarId(carModification1);
 //    calculationService.merge(calculation);
 //
 //    calculation = new Calculation();
 //    calculation.setAuthor(author);
-//    calculation.setCarId(5860);
+//    calculation.setCarId(carModification2);
 //    calculationService.merge(calculation);
 
     CalculationService calculationService = new CalculationService(em);

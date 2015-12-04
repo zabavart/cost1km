@@ -22,13 +22,13 @@ public class CarModificationService {
     return carModificationFromDB;
   }
 
-  public void delete(long id) {
+  public void delete(int id) {
     em.getTransaction().begin();
     em.remove(get(id));
     em.getTransaction().commit();
   }
 
-  public CarModification get(long id) {
+  public CarModification get(int id) {
     return em.find(CarModification.class, id);
   }
 

@@ -17,9 +17,6 @@ public class Author {
   @Column(name = "name")
   private String name;
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "author")
-  private Set<Calculation> calculations;
-
   public Author() {
   }
 
@@ -37,13 +34,5 @@ public class Author {
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public Set<Calculation> getCalculations() {
-    return calculations;
-  }
-
-  public void setCalculations(Set<Calculation> calculations) {
-    this.calculations = calculations;
   }
 }

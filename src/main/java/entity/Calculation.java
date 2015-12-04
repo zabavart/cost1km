@@ -16,8 +16,9 @@ public class Calculation {
   @JoinColumn(name = "author_id", nullable = false)
   private Author author;
 
-  @Column(name = "car_id")
-  private Integer carId;
+  @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+  @JoinColumn(name = "car_id", nullable = false)
+  private CarModification carId;
 
   public Calculation() {
   }
@@ -38,11 +39,11 @@ public class Calculation {
     this.author = author;
   }
 
-  public Integer getCarId() {
+  public CarModification getCarId() {
     return carId;
   }
 
-  public void setCarId(Integer carId) {
+  public void setCarId(CarModification carId) {
     this.carId = carId;
   }
 }

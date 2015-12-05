@@ -20,8 +20,9 @@ public class CarSerie {
   @Column(name = "id_car_serie", nullable = false, unique = true)
   private Integer idCarSerie;
 
-  @Column(name = "id_car_model")
-  private Integer idCarModel;
+  @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+  @JoinColumn(name = "id_car_model", nullable = false)
+  private CarModel carModel;
 
   @Column(name = "name", length = 255)
   private String name;
@@ -44,12 +45,12 @@ public class CarSerie {
     this.idCarSerie = idCarSerie;
   }
 
-  public Integer getIdCarModel() {
-    return idCarModel;
+  public CarModel getCarModel() {
+    return carModel;
   }
 
-  public void setIdCarModel(Integer idCarModel) {
-    this.idCarModel = idCarModel;
+  public void setCarModel(CarModel carModel) {
+    this.carModel = carModel;
   }
 
   public String getName() {

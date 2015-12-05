@@ -48,6 +48,7 @@ public class CalcServlet extends HttpServlet {
 
 
     JSONObject jsonObject = new JSONObject();
+
     jsonObject.put("cost1km", cost1km.calc());
     jsonObject.put("carMarkList", carMarkService.getAll());
 

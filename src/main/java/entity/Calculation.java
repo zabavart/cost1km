@@ -18,7 +18,7 @@ public class Calculation {
 
   @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
   @JoinColumn(name = "car_id", nullable = false)
-  private CarModification carId;
+  private CarModification carModification;
 
   public Calculation() {
   }
@@ -39,11 +39,16 @@ public class Calculation {
     this.author = author;
   }
 
-  public CarModification getCarId() {
-    return carId;
+  public CarModification getCarModification() {
+    return carModification;
   }
 
-  public void setCarId(CarModification carId) {
-    this.carId = carId;
+  public void setCarModification(CarModification carId) {
+    this.carModification = carId;
+  }
+
+  @Override
+  public String toString() {
+    return "DataObject [id=" + id + ", author=" + 4 + ", carModification=" + 5 + "]";
   }
 }

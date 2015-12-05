@@ -1,11 +1,11 @@
 package servlets;
 
-import crud.AuthorService;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import crud.CalculationService;
-import crud.CarModificationService;
-import entity.Author;
 import entity.Calculation;
-import entity.CarModification;
 import utils.DB;
 
 import java.io.IOException;
@@ -48,5 +48,14 @@ public class CalculationServlet extends HttpServlet {
 
     CalculationService calculationService = new CalculationService(em);
     List<Calculation> calculationList = calculationService.get();
+
+    for (Calculation calculation : calculationList) {
+      calculation.getCarModification().getCarSerie().getCarModel().getCarMark().getName();
+      calculation.getCarModification().getCarSerie().getCarModel().getName();
+    }
+
+
+    System.out.println("!!!!! " + calculationList.get(0).getCarModification().getCarSerie().getCarModel().getCarMark().getName());
+    System.out.println("@@@@@ " + calculationList.get(0).getCarModification().getCarSerie().getCarModel().getName());
   }
 }

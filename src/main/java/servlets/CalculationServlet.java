@@ -1,14 +1,24 @@
 package servlets;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import crud.CalculationService;
+import crud.CarMarkService;
+import crud.CarModelService;
+import crud.CarModificationService;
+import crud.CarSerieService;
 import entity.Calculation;
+import model.Cost1kmModel;
 import utils.DB;
+import utils.Util;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,34 +38,14 @@ public class CalculationServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//    AuthorService authorService = new AuthorService(em);
-//    Author author = authorService.get(45);
-//
-//    CarModificationService carModificationService = new CarModificationService(em);
-//    CarModification carModification1 = carModificationService.get(5233);
-//    CarModification carModification2 = carModificationService.get(5860);
-//
-//    CalculationService calculationService = new CalculationService(em);
-//    Calculation calculation = new Calculation();
-//    calculation.setAuthor(author);
-//    calculation.setCarId(carModification1);
-//    calculationService.merge(calculation);
-//
-//    calculation = new Calculation();
-//    calculation.setAuthor(author);
-//    calculation.setCarId(carModification2);
-//    calculationService.merge(calculation);
+    response.setContentType("application/json");
 
     CalculationService calculationService = new CalculationService(em);
-    List<Calculation> calculationList = calculationService.get();
+    ObjectMapper objectMapper = new ObjectMapper();
+    String json = objectMapper.writeValueAsString(calculationService.get());
 
-    for (Calculation calculation : calculationList) {
-      calculation.getCarModification().getCarSerie().getCarModel().getCarMark().getName();
-      calculation.getCarModification().getCarSerie().getCarModel().getName();
-    }
-
-
-    System.out.println("!!!!! " + calculationList.get(0).getCarModification().getCarSerie().getCarModel().getCarMark().getName());
-    System.out.println("@@@@@ " + calculationList.get(0).getCarModification().getCarSerie().getCarModel().getName());
+    PrintWriter out = response.getWriter();
+    out.println(json);
+    out.close();
   }
 }

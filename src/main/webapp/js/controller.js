@@ -102,7 +102,8 @@ function controller() {
 
             if ($('#carModification').val() == null) {
                 for (key in data.carModificationList) {
-                    $('#carModification').append('<option value=' + key + '>' + data.carModificationList[key] + '</option>');
+                    $('#carModification').append('<option value=' + key + '>' + data.carModificationList[key]
+                                                 + '</option>');
                 }
                 $('#carModification').val($('#select option:first').val());
             }
@@ -140,12 +141,16 @@ $('#openCar').click(function () {
         '/calculations',
         {},
         function (data) {
-
+            var calculation = data;
+            for (i = 0; i < calculation.length; i++) {
+                var carMark = calculation[i].carModification.carModel.carMark.name;
+                var carModel = calculation[i].carModification.carModel.name;
+                $('#calculations').append('<a href="#" class="list-group-item">' + carMark + " " + carModel + " " + '</a>');
+            }
         }
     );
 });
 
 $('#openCarBtn').click(function () {
-    console.log('!!!!!!');
     save();
 });

@@ -1,16 +1,17 @@
 package servlets;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import crud.*;
 import entity.Cost;
 import model.Cost1kmModel;
-
-import org.json.simple.JSONObject;
 
 import utils.DB;
 import utils.Util;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
@@ -43,29 +44,32 @@ public class CalcServlet extends HttpServlet {
     model.setOtherExpenses(Util.parseInt(request.getParameter("otherExpenses")));
     model.setSellingPrice(Util.parseInt(request.getParameter("sellingPrice")));
 
+
     int cost = model.getPrice() + model.getBenzine() + model.getOtherExpenses() - model.getSellingPrice();
     Cost1km cost1km = new Cost1km(cost, model.getMilesOn());
 
+    ObjectMapper objectMapper = new ObjectMapper();
+    Map<String,Object> userData = new HashMap<String,Object>();
 
-    JSONObject jsonObject = new JSONObject();
-
-    jsonObject.put("cost1km", cost1km.calc());
-    jsonObject.put("carMarkList", carMarkService.getAll());
+    userData.put("cost1km", cost1km.calc());
+    userData.put("carMarkList", carMarkService.get());
 
     if (model.getCarMarkId() != 0) {
-      jsonObject.put("carModelList", carModelService.getAllByCarMarkId(model.getCarMarkId()));
+      userData.put("carModelList", carModelService.getByCarMarkId(model.getCarMarkId()));
     }
 
     if (model.getCarModelId() != 0) {
-      jsonObject.put("carSerieList", carSerieService.getAllByCarModelId(model.getCarModelId()));
+      userData.put("carSerieList", carSerieService.getAllByCarModelId(model.getCarModelId()));
     }
 
     if (model.getCarSerieId() != 0) {
-      jsonObject.put("carModificationList", carModificationService.getAllByCarSerieId(model.getCarSerieId()));
+      userData.put("carModificationList", carModificationService.getAllByCarSerieId(model.getCarSerieId()));
     }
 
+    String json = new ObjectMapper().writeValueAsString(userData);
+    System.out.println("!!!!! " + json);
     PrintWriter out = response.getWriter();
-    out.println(jsonObject);
+    out.println(json);
     out.close();
   }
 

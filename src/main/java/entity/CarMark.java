@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "car_mark")
-@NamedQuery(name = "CarMark.getAll", query = "select c from CarMark c")
+@NamedQuery(name = "CarMark.get", query = "select c from CarMark c")
 public class CarMark {
 
   @Id

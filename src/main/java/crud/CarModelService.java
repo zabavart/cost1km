@@ -50,14 +50,8 @@ public class CarModelService {
     return jsonObject;
   }
 
-  public JSONObject getAllByCarMarkId(int carMarkId) {
-    Query namedQuery = em.createNamedQuery("CarModel.getAllByCarMarkId").setParameter("id_car_mark", carMarkId);
-    List<CarModel> carModelist = namedQuery.getResultList();
-    JSONObject jsonObject = new JSONObject();
-
-    for (CarModel carModel : carModelist) {
-      jsonObject.put(carModel.getIdCarModel(), carModel.getName());
-    }
-    return jsonObject;
+  public List<CarModel> getByCarMarkId(int carMarkId) {
+    Query namedQuery = em.createNamedQuery("CarModel.getByCarMarkId").setParameter("id_car_mark", carMarkId);
+    return namedQuery.getResultList();
   }
 }

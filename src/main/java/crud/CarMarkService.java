@@ -34,19 +34,14 @@ public class CarMarkService {
     return em.find(CarMark.class, id);
   }
 
+  public List<CarMark> get() {
+    Query namedQuery = em.createNamedQuery("CarMark.get");
+    return  namedQuery.getResultList();
+  }
+
   public void update(CarMark carMark) {
     em.getTransaction().begin();
     em.merge(carMark);
     em.getTransaction().commit();
-  }
-
-  public JSONObject getAll() {
-    Query namedQuery = em.createNamedQuery("CarMark.getAll");
-    List<CarMark> carMarkList = namedQuery.getResultList();
-    JSONObject jsonObject = new JSONObject();
-    for (CarMark carMark : carMarkList) {
-      jsonObject.put(carMark.getIdCarMark(), carMark.getName());
-    }
-    return jsonObject;
   }
 }

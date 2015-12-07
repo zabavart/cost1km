@@ -76,37 +76,43 @@ function controller() {
             sellingPrice: $('#sellingPrice').val()
         },
         function (data) {
-            $('#cost1km').text('Стоимость 1 км ' + data.cost1km + ' руб.');
+            console.log(data)
+
+            //$('#cost1km').text('Стоимость 1 км ' + data.cost1km + ' руб.');
 
             if ($('#carMark').val() == null) {
                 $('#carMark option').remove();
-                for (key in data.carMarkList) {
-                    $('#carMark').append('<option value=' + key + '>' + data.carMarkList[key] + '</option>');
+                for (i = 0; i < data.carMarkList.length; i++) {
+                    $('#carMark').append('<option value=' + data.carMarkList[i].idCarMar + '>' + data.carMarkList[i].name + '</option>');
                 }
-                $('#carMark').val($('#select option:first').val());
+                console.log("!!!!!!!! " + ('#select option:first').val())
+                //$('#carMark').val($('#select option:first').val());
             }
 
-            if ($('#carModel').val() == null) {
-                for (key in data.carModelList) {
-                    $('#carModel').append('<option value=' + key + '>' + data.carModelList[key] + '</option>');
-                }
-                $('#carModel').val($('#select option:first').val());
-            }
+            //console.log(data.carModelList);
+            //console.log(data.carModelList.length);
 
-            if ($('#carSerie').val() == null) {
-                for (key in data.carSerieList) {
-                    $('#carSerie').append('<option value=' + key + '>' + data.carSerieList[key] + '</option>');
-                }
-                $('#carSerie').val($('#select option:first').val());
-            }
-
-            if ($('#carModification').val() == null) {
-                for (key in data.carModificationList) {
-                    $('#carModification').append('<option value=' + key + '>' + data.carModificationList[key]
-                                                 + '</option>');
-                }
-                $('#carModification').val($('#select option:first').val());
-            }
+            //if ($('#carModel').val() == null) {
+            //    for (i = 0; i < data.carModelList.length; i++) {
+            //        $('#carModel').append('<option value=' + data.carModelList[i].idCarModel + '>' + data.carModelList[i].name + '</option>');
+            //    }
+            //    $('#carModel').val($('#select option:first').val());
+            //}
+            //
+            //if ($('#carSerie').val() == null) {
+            //    for (key in data.carSerieList) {
+            //        $('#carSerie').append('<option value=' + key + '>' + data.carSerieList[key] + '</option>');
+            //    }
+            //    $('#carSerie').val($('#select option:first').val());
+            //}
+            //
+            //if ($('#carModification').val() == null) {
+            //    for (key in data.carModificationList) {
+            //        $('#carModification').append('<option value=' + key + '>' + data.carModificationList[key]
+            //            + '</option>');
+            //    }
+            //    $('#carModification').val($('#select option:first').val());
+            //}
         }
     );
 }

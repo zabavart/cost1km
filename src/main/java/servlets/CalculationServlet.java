@@ -1,25 +1,10 @@
 package servlets;
 
-import org.codehaus.jackson.map.ObjectMapper;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import crud.CalculationService;
-import crud.CarMarkService;
-import crud.CarModelService;
-import crud.CarModificationService;
-import crud.CarSerieService;
-import entity.Calculation;
-import model.Cost1kmModel;
-import utils.DB;
-import utils.Util;
-
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import crud.CalculationService;
+import utils.DB;
 
 import javax.persistence.EntityManager;
 import javax.servlet.ServletException;

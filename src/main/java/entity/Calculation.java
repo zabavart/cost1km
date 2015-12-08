@@ -13,8 +13,8 @@ public class Calculation {
   Integer id;
 
   @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-  @JoinColumn(name = "author_id", nullable = false)
-  private Author author;
+  @JoinColumn(name = "user_id", nullable = false)
+  private User user;
 
   @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
   @JoinColumn(name = "car_id", nullable = false)
@@ -31,12 +31,12 @@ public class Calculation {
     this.id = id;
   }
 
-  public Author getAuthor() {
-    return author;
+  public User getUser() {
+    return user;
   }
 
-  public void setAuthor(Author author) {
-    this.author = author;
+  public void setUser(User user) {
+    this.user = user;
   }
 
   public CarModification getCarModification() {
@@ -45,10 +45,5 @@ public class Calculation {
 
   public void setCarModification(CarModification carId) {
     this.carModification = carId;
-  }
-
-  @Override
-  public String toString() {
-    return "DataObject [id=" + id + ", author=" + 4 + ", carModification=" + 5 + "]";
   }
 }

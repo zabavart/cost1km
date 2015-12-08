@@ -6,8 +6,8 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "author")
-public class Author {
+@Table(name = "users")
+public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,7 +17,7 @@ public class Author {
   @Column(name = "name")
   private String name;
 
-  public Author() {
+  public User() {
   }
 
   public Integer getId() {

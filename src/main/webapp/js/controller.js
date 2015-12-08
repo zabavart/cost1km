@@ -61,7 +61,6 @@ $('#save').click(function () {
 });
 
 function controller() {
-    console.log('!!!@@@!!! ' + $( "#carMark option:selected" ).val());
     $.post(
         '/calc',
         {
@@ -77,8 +76,6 @@ function controller() {
             sellingPrice: $('#sellingPrice').val()
         },
         function (data) {
-            console.log(data)
-
             $('#cost1km').text('Стоимость 1 км ' + data.cost1km + ' руб.');
 
             if ($('#carMark').val() == null) {

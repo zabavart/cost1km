@@ -98,13 +98,14 @@ function controller() {
                 $('#carModel').val($('#select option:first').val());
             }
 
-            //if ($('#carSerie').val() == null) {
-            //    for (key in data.carSerieList) {
-            //        $('#carSerie').append('<option value=' + key + '>' + data.carSerieList[key] + '</option>');
-            //    }
-            //    $('#carSerie').val($('#select option:first').val());
-            //}
-            //
+            if ($('#carSerie').val() == null) {
+                for (key in data.carSerieList) {
+                    var carSerieList = data.carSerieList[key];
+                    $('#carSerie').append('<option value=' + carSerieList.idCarSerie + '>' + carSerieList.name + '</option>');
+                }
+                $('#carSerie').val($('#select option:first').val());
+            }
+
             //if ($('#carModification').val() == null) {
             //    for (key in data.carModificationList) {
             //        $('#carModification').append('<option value=' + key + '>' + data.carModificationList[key]

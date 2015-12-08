@@ -11,11 +11,13 @@ public class Period {
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
 
-  @Column(name = "user_car_id")
-  private Integer userCarId;
+  @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+  @JoinColumn(name = "calculation_id", nullable = false)
+  private Calculation calculation;
 
-  @Column(name = "type_period_id")
-  private Integer typePeriodId;
+  @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+  @JoinColumn(name = "type_period_id", nullable = false)
+  private TypePeriod typePeriod;
 
   public Period() {
   }
@@ -28,20 +30,19 @@ public class Period {
     this.id = id;
   }
 
-  public Integer getUserCarId() {
-    return userCarId;
+  public Calculation getCalculation() {
+    return calculation;
   }
 
-  public void setUserCarId(Integer userCarId) {
-    this.userCarId = userCarId;
+  public void setCalculation(Calculation calculation) {
+    this.calculation = calculation;
   }
 
-  public Integer getTypePeriodId() {
-    return typePeriodId;
+  public TypePeriod getTypePeriod() {
+    return typePeriod;
   }
 
-  public void setTypePeriodId(Integer typePeriodId) {
-    this.typePeriodId = typePeriodId;
+  public void setTypePeriod(TypePeriod typePeriod) {
+    this.typePeriod = typePeriod;
   }
 }
-

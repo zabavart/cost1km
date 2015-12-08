@@ -48,7 +48,6 @@ public class CalcServlet extends HttpServlet {
     int cost = model.getPrice() + model.getBenzine() + model.getOtherExpenses() - model.getSellingPrice();
     Cost1km cost1km = new Cost1km(cost, model.getMilesOn());
 
-    ObjectMapper objectMapper = new ObjectMapper();
     Map<String,Object> userData = new HashMap<String,Object>();
 
     userData.put("cost1km", cost1km.calc());
@@ -67,7 +66,6 @@ public class CalcServlet extends HttpServlet {
     }
 
     String json = new ObjectMapper().writeValueAsString(userData);
-    System.out.println("!!!!! " + json);
     PrintWriter out = response.getWriter();
     out.println(json);
     out.close();

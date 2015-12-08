@@ -50,7 +50,7 @@ public class CalcServlet extends HttpServlet {
 
     Map<String,Object> userData = new HashMap<String,Object>();
 
-    userData.put("cost1km", cost1km.calc());
+//    userData.put("cost1km", cost1km.calc());
     userData.put("carMarkList", carMarkService.get());
 
     if (model.getCarMarkId() != 0) {
@@ -75,21 +75,21 @@ public class CalcServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     response.setContentType("text/html");
 
-    CostService costService = new CostService(em);
-    Cost cost = costService.get(40);
-    request.setAttribute("price", cost.getPrice());
-    request.setAttribute("sellingPrice", cost.getSellingPrice());
-    request.setAttribute("milesOn", cost.getMilesOn());
-    request.setAttribute("benzine", cost.getBenzine());
-    request.setAttribute("repairs", cost.getRepairs());
-    request.setAttribute("service", cost.getService());
-    request.setAttribute("credit", cost.getCredit());
-    request.setAttribute("kasko", cost.getKasko());
-    request.setAttribute("osago", cost.getOsago());
-    request.setAttribute("tax", cost.getTax());
-    request.setAttribute("penalty", cost.getPenalty());
-    request.setAttribute("parking", cost.getParking());
-    request.setAttribute("otherExpenses", cost.getOtherExpenses());
+//    CostService costService = new CostService(em);
+//    Cost cost = costService.get(40);
+//    request.setAttribute("price", cost.getPrice());
+//    request.setAttribute("sellingPrice", cost.getSellingPrice());
+//    request.setAttribute("milesOn", cost.getMilesOn());
+//    request.setAttribute("benzine", cost.getBenzine());
+//    request.setAttribute("repairs", cost.getRepairs());
+//    request.setAttribute("service", cost.getService());
+//    request.setAttribute("credit", cost.getCredit());
+//    request.setAttribute("kasko", cost.getKasko());
+//    request.setAttribute("osago", cost.getOsago());
+//    request.setAttribute("tax", cost.getTax());
+//    request.setAttribute("penalty", cost.getPenalty());
+//    request.setAttribute("parking", cost.getParking());
+//    request.setAttribute("otherExpenses", cost.getOtherExpenses());
 
     RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
     dispatcher.forward(request, response);

@@ -1,8 +1,14 @@
 package crud;
 
+import entity.Calculation;
+import entity.CarModification;
 import entity.Cost;
+import entity.User;
+
+import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 public class CostService {
   private EntityManager em;
@@ -32,5 +38,10 @@ public class CostService {
     em.getTransaction().begin();
     em.merge(cost);
     em.getTransaction().commit();
+  }
+
+  public List<Cost> getByCalculation(Calculation calculation) {
+    Query namedQuery = em.createNamedQuery("Calculation.getByCalculation").setParameter("calculation_id", calculation.getId());
+    return namedQuery.getResultList();
   }
 }

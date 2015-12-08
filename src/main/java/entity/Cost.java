@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cost")
+@NamedQuery(name = "Calculation.getByCalculation", query = "select c from Calculation c where calculation_id = :calculation_id")
 public class Cost {
 
   @Id
@@ -11,8 +12,9 @@ public class Cost {
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
 
-  @Column(name = "period_id")
-  private Integer periodId;
+  @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+  @JoinColumn(name = "calculation_id", nullable = false)
+  private Calculation calculation;
 
   @Column(name = "price")
   private Integer price;
@@ -64,12 +66,12 @@ public class Cost {
     this.id = id;
   }
 
-  public Integer getPeriodId() {
-    return periodId;
+  public Calculation getCalculation() {
+    return calculation;
   }
 
-  public void setPeriodId(Integer periodId) {
-    this.periodId = periodId;
+  public void setCalculation(Calculation calculation) {
+    this.calculation = calculation;
   }
 
   public Integer getPrice() {

@@ -58,7 +58,7 @@ public class CalcServlet extends HttpServlet {
     }
 
     if (model.getCarModelId() != 0) {
-      userData.put("carSerieList", carSerieService.getAllByCarModelId(model.getCarModelId()));
+      userData.put("carSerieList", carSerieService.getByCarModelId(model.getCarModelId()));
     }
 
     if (model.getCarSerieId() != 0) {

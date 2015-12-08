@@ -7,9 +7,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "car_serie")
 @NamedQueries({
-        @NamedQuery(name = "CarSerie.getAll",
+        @NamedQuery(name = "CarSerie.get",
                     query = "select c from CarSerie c"),
-        @NamedQuery(name = "CarSerie.getAllByCarModelId",
+        @NamedQuery(name = "CarSerie.getByCarModelId",
                     query = "select c from CarSerie c where id_car_model = :id_car_model"),
 })
 

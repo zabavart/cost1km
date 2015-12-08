@@ -83,36 +83,35 @@ function controller() {
 
             if ($('#carMark').val() == null) {
                 $('#carMark option').remove();
-                for (i = 0; i < data.carMarkList.length; i++) {
-                    var carMark = data.carMarkList[i];
+                for (var key in  data.carMarkList) {
+                    var carMark =  data.carMarkList[key];
                     $('#carMark').append('<option value=' + carMark.idCarMark + '>' + carMark.name + '</option>');
                 }
                 $('#carMark').val($('#select option:first').val());
             }
 
-
             if ($('#carModel').val() == null) {
-                for (i = 0; i < data.carModelList.length; i++) {
-                    var carModel = data.carModelList[i];
+                for (var key in  data.carModelList) {
+                    var carModel = data.carModelList[key];
                     $('#carModel').append('<option value=' + carModel.idCarModel + '>' + carModel.name + '</option>');
                 }
                 $('#carModel').val($('#select option:first').val());
             }
 
-            if ($('#carSerie').val() == null) {
-                for (key in data.carSerieList) {
-                    $('#carSerie').append('<option value=' + key + '>' + data.carSerieList[key] + '</option>');
-                }
-                $('#carSerie').val($('#select option:first').val());
-            }
-
-            if ($('#carModification').val() == null) {
-                for (key in data.carModificationList) {
-                    $('#carModification').append('<option value=' + key + '>' + data.carModificationList[key]
-                        + '</option>');
-                }
-                $('#carModification').val($('#select option:first').val());
-            }
+            //if ($('#carSerie').val() == null) {
+            //    for (key in data.carSerieList) {
+            //        $('#carSerie').append('<option value=' + key + '>' + data.carSerieList[key] + '</option>');
+            //    }
+            //    $('#carSerie').val($('#select option:first').val());
+            //}
+            //
+            //if ($('#carModification').val() == null) {
+            //    for (key in data.carModificationList) {
+            //        $('#carModification').append('<option value=' + key + '>' + data.carModificationList[key]
+            //            + '</option>');
+            //    }
+            //    $('#carModification').val($('#select option:first').val());
+            //}
         }
     );
 }

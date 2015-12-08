@@ -39,23 +39,8 @@ public class CarSerieService {
     em.getTransaction().commit();
   }
 
-  public JSONObject getAll() {
-    Query namedQuery = em.createNamedQuery("CarSerie.getAll");
-    List<CarSerie> carSerieist = namedQuery.getResultList();
-    JSONObject jsonObject = new JSONObject();
-    for (CarSerie carSerie : carSerieist) {
-      jsonObject.put(carSerie.getIdCarSerie(), carSerie.getName());
-    }
-    return jsonObject;
-  }
-
-  public JSONObject getAllByCarModelId(int carModelId) {
-    Query namedQuery = em.createNamedQuery("CarSerie.getAllByCarModelId").setParameter("id_car_model", carModelId);
-    List<CarSerie> carSerieList = namedQuery.getResultList();
-    JSONObject jsonObject = new JSONObject();
-    for (CarSerie carSerie : carSerieList) {
-        jsonObject.put(carSerie.getIdCarSerie(), carSerie.getName());
-    }
-    return jsonObject;
+  public List<CarSerie> getByCarModelId(int carModelId) {
+    Query namedQuery = em.createNamedQuery("CarSerie.getByCarModelId").setParameter("id_car_model", carModelId);
+     return namedQuery.getResultList();
   }
 }

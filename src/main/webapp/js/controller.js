@@ -81,32 +81,36 @@ function controller() {
             if ($('#carMark').val() == null) {
                 $('#carMark option').remove();
                 for (var key in  data.carMarkList) {
-                    var carMark =  data.carMarkList[key];
-                    $('#carMark').append('<option value=' + carMark.idCarMark + '>' + carMark.name + '</option>');
+                    var id = data.carMarkList[key].idCarMark;
+                    var name = data.carMarkList[key].name;
+                    $('#carMark').append('<option value=' + id + '>' + name + '</option>');
                 }
                 $('#carMark').val($('#select option:first').val());
             }
 
             if ($('#carModel').val() == null) {
                 for (var key in  data.carModelList) {
-                    var carModel = data.carModelList[key];
-                    $('#carModel').append('<option value=' + carModel.idCarModel + '>' + carModel.name + '</option>');
+                    var id = data.carModelList[key].idCarModel;
+                    var name = data.carModelList[key].name;
+                    $('#carModel').append('<option value=' + id + '>' + name + '</option>');
                 }
                 $('#carModel').val($('#select option:first').val());
             }
 
             if ($('#carSerie').val() == null) {
                 for (key in data.carSerieList) {
-                    var carSerieList = data.carSerieList[key];
-                    $('#carSerie').append('<option value=' + carSerieList.idCarSerie + '>' + carSerieList.name + '</option>');
+                    var id = data.carSerieList[key].idCarSerie;
+                    var name = data.carSerieList[key].name;
+                    $('#carSerie').append('<option value=' + id + '>' + name + '</option>');
                 }
                 $('#carSerie').val($('#select option:first').val());
             }
 
             if ($('#carModification').val() == null) {
                 for (key in data.carModificationList) {
-                    var carModificationList = data.carModificationList[key];
-                    $('#carModification').append('<option value=' + carModificationList.idCarModification + '>' + carModificationList.name + '</option>');
+                    var id = data.carModificationList[key].idCarModification;
+                    var name = data.carModificationList[key].name;
+                    $('#carModification').append('<option value=' + id + '>' + name + '</option>');
                 }
                 $('#carModification').val($('#select option:first').val());
             }

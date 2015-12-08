@@ -1,7 +1,9 @@
 package crud;
 
 import entity.Calculation;
-import entity.CarMark;
+import entity.CarModel;
+import entity.CarModification;
+import entity.User;
 
 import java.util.List;
 
@@ -37,11 +39,16 @@ public class CalculationService {
     return namedQuery.getResultList();
   }
 
-
-
   public void update(Calculation calculation) {
     em.getTransaction().begin();
     em.merge(calculation);
     em.getTransaction().commit();
+  }
+
+  public List<Calculation>  getByUserAndCarModification(CarModification carModification, User user) {
+    Query namedQuery = em.createNamedQuery("Calculation.getByUserAndCarModification")
+        .setParameter("car_id", carModification.getIdCarModification())
+        .setParameter("user_id", user.getId());
+    return namedQuery.getResultList();
   }
 }

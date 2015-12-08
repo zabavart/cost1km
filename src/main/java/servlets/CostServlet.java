@@ -8,6 +8,7 @@ import utils.Util;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -23,49 +24,50 @@ public class CostServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//    UserService userService = new UserService(em);
-//    UserCarService userCarService = new UserCarService(em);
+    UserService userService = new UserService(em);
+    CalculationService calculationService = new CalculationService(em);
     PeriodService periodService = new PeriodService(em);
     CostService costService = new CostService(em);
+    CarModificationService carModificationService = new CarModificationService(em);
 
-//    User user = new User();
-//    user.setId(17);//todo подтягивать с клиента
-//    user.setName("test");//todo подтягивать с клиента
-//    userService.merge(user);
-
-//    UserCar userCar = new UserCar();
-//    userCar.setId(36); //todo подтягивать с клиента
-//    userCar.setUserId(17); //todo подтягивать с клиента
-//    userCar.setCarId(Integer.valueOf(request.getParameter("carSerieId")));
-//    userCarService.merge(userCar);
-
-    ArrayList<Period> periods = new ArrayList<Period>(); //todo подтягивать с клиента
-    periods.add(new Period());
-    for (Period period : periods) {
-      period.setId(34); //todo подтягивать с клиента
-      period.setTypePeriodId(33); //todo подтягивать с клиента
-      period.setUserCarId(Integer.valueOf(request.getParameter("carSerieId")));
-      periodService.merge(period);
-
-      Cost cost = new Cost();
-      cost.setId(40);
-      //todo подтягивать с клиента
-      cost.setPeriodId(34);
-      cost.setPrice(Integer.valueOf(request.getParameter("price")));
-      cost.setSellingPrice(Integer.valueOf(request.getParameter("sellingPrice")));
-      cost.setMilesOn(Integer.valueOf(request.getParameter("milesOn")));
-      cost.setBenzine(Integer.valueOf(request.getParameter("benzine")));
-      cost.setRepairs(Integer.valueOf(request.getParameter("repairs")));
-      cost.setService(Integer.valueOf(request.getParameter("service")));
-      cost.setCredit(Integer.valueOf(request.getParameter("credit")));
-      cost.setKasko(Integer.valueOf(request.getParameter("kasko")));
-      cost.setOsago(Integer.valueOf(request.getParameter("osago")));
-      cost.setTax(Integer.valueOf(request.getParameter("tax")));
-      cost.setPenalty(Integer.valueOf(request.getParameter("penalty")));
-      cost.setParking(Integer.valueOf(request.getParameter("parking")));
-      cost.setOtherExpenses(Integer.valueOf(request.getParameter("otherExpenses")));
-      costService.merge(cost);
+    User user = userService.get(45); //todo подтягивать с клиента
+    CarModification carModification = carModificationService.get(Integer.valueOf(request.getParameter("carModificationId")));
+    List<Calculation> calculations = calculationService.getByUserAndCarModification(carModification, user);
+    Calculation calculation = new Calculation();
+    if (calculations.size() > 0) {
+      calculation = calculations.get(0);
+    } else {
+      calculation.setUser(user);
+      calculation.setCarModification(carModification);
+      calculation = calculationService.merge(calculation);
     }
+
+//    ArrayList<Period> periods = new ArrayList<Period>(); //todo подтягивать с клиента
+//    periods.add(new Period());
+//    for (Period period : periods) {
+//      period.setTypePeriodId(33); //todo подтягивать с клиента
+//      period.setUserCarId(Integer.valueOf(request.getParameter("carSerieId")));
+//      periodService.merge(period);
+//
+//      Cost cost = new Cost();
+//      cost.setId(40);
+//      //todo подтягивать с клиента
+//      cost.setPeriodId(34);
+//      cost.setPrice(Integer.valueOf(request.getParameter("price")));
+//      cost.setSellingPrice(Integer.valueOf(request.getParameter("sellingPrice")));
+//      cost.setMilesOn(Integer.valueOf(request.getParameter("milesOn")));
+//      cost.setBenzine(Integer.valueOf(request.getParameter("benzine")));
+//      cost.setRepairs(Integer.valueOf(request.getParameter("repairs")));
+//      cost.setService(Integer.valueOf(request.getParameter("service")));
+//      cost.setCredit(Integer.valueOf(request.getParameter("credit")));
+//      cost.setKasko(Integer.valueOf(request.getParameter("kasko")));
+//      cost.setOsago(Integer.valueOf(request.getParameter("osago")));
+//      cost.setTax(Integer.valueOf(request.getParameter("tax")));
+//      cost.setPenalty(Integer.valueOf(request.getParameter("penalty")));
+//      cost.setParking(Integer.valueOf(request.getParameter("parking")));
+//      cost.setOtherExpenses(Integer.valueOf(request.getParameter("otherExpenses")));
+//      costService.merge(cost);
+//    }
   }
 
   @Override

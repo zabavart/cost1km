@@ -4,7 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "calculation")
-@NamedQuery(name = "Calculation.get", query = "select c from Calculation c")
+@NamedQueries({
+    @NamedQuery(name = "Calculation.get",
+        query = "select c from Calculation c"),
+    @NamedQuery(name = "Calculation.getByUserAndCarModification",
+        query = "select c from Calculation c where car_id = :car_id and user_id = :user_id"),
+})
 public class Calculation {
 
   @Id

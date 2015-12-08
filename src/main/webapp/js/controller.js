@@ -103,13 +103,13 @@ function controller() {
                 $('#carSerie').val($('#select option:first').val());
             }
 
-            //if ($('#carModification').val() == null) {
-            //    for (key in data.carModificationList) {
-            //        $('#carModification').append('<option value=' + key + '>' + data.carModificationList[key]
-            //            + '</option>');
-            //    }
-            //    $('#carModification').val($('#select option:first').val());
-            //}
+            if ($('#carModification').val() == null) {
+                for (key in data.carModificationList) {
+                    var carModificationList = data.carModificationList[key];
+                    $('#carModification').append('<option value=' + carModificationList.idCarModification + '>' + carModificationList.name + '</option>');
+                }
+                $('#carModification').val($('#select option:first').val());
+            }
         }
     );
 }

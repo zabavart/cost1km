@@ -62,7 +62,7 @@ public class CalcServlet extends HttpServlet {
     }
 
     if (model.getCarSerieId() != 0) {
-      userData.put("carModificationList", carModificationService.getAllByCarSerieId(model.getCarSerieId()));
+      userData.put("carModificationList", carModificationService.getByCarSerieId(model.getCarSerieId()));
     }
 
     String json = new ObjectMapper().writeValueAsString(userData);

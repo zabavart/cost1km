@@ -9,7 +9,7 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(name = "CarModification.getAll",
                     query = "select c from CarModification c"),
-        @NamedQuery(name = "CarModification.getAllByCarSerieId",
+        @NamedQuery(name = "CarModification.getByCarSerieId",
                     query = "select c from CarModification c where id_car_serie = :id_car_serie"),
 })
 

@@ -62,7 +62,7 @@ $('#save').click(function () {
 
 function controller() {
     $.post(
-        '/calc',
+        '/cost1km',
         {
             carMarkId: $('#carMark').val(),
             carModelId: $('#carModel').val(),

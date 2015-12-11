@@ -2,7 +2,7 @@ package servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import crud.*;
-import entity.Cost;
+import logic.Cost1km;
 import model.Cost1kmModel;
 
 import utils.DB;
@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/calc")
-public class CalcServlet extends HttpServlet {
+@WebServlet("/cost1km")
+public class Cost1kmServlet extends HttpServlet {
   private EntityManager em = DB.getEntityManager();
 
   @Override

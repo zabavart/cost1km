@@ -149,6 +149,7 @@ $('#openCar').click(function () {
         {},
         function (data) {
             var calculation = data;
+            $('#calculations').empty();
             for (i = 0; i < calculation.length; i++) {
                 var carMark = calculation[i].carModification.carModel.carMark.name;
                 var carModel = calculation[i].carModification.carModel.name;

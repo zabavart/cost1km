@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cost")
-@NamedQuery(name = "Calculation.getByCalculation", query = "select c from Calculation c where calculation_id = :calculation_id")
+@NamedQuery(name = "Calculation.getByCalculation", query = "select c from Cost c where calculation_id = :calculation_id")
 public class Cost {
 
   @Id

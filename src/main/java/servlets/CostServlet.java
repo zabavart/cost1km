@@ -39,28 +39,30 @@ public class CostServlet extends HttpServlet {
 
     Calculation calculation = new Calculation();
     if (calculations.size() > 0) {
+      //old car
       calculation = calculations.get(0);
       cost.setId(costService.getByCalculation(calculation).get(0).getId());
     } else {
+      //new car
       calculation.setUser(user);
       calculation.setCarModification(carModification);
       calculation = calculationService.merge(calculation);
     }
 
     cost.setCalculation(calculation);
-    cost.setPrice(Integer.valueOf(request.getParameter("price")));
-    cost.setSellingPrice(Integer.valueOf(request.getParameter("sellingPrice")));
-    cost.setMilesOn(Integer.valueOf(request.getParameter("milesOn")));
-    cost.setBenzine(Integer.valueOf(request.getParameter("benzine")));
-    cost.setRepairs(Integer.valueOf(request.getParameter("repairs")));
-    cost.setService(Integer.valueOf(request.getParameter("service")));
-    cost.setCredit(Integer.valueOf(request.getParameter("credit")));
-    cost.setKasko(Integer.valueOf(request.getParameter("kasko")));
-    cost.setOsago(Integer.valueOf(request.getParameter("osago")));
-    cost.setTax(Integer.valueOf(request.getParameter("tax")));
-    cost.setPenalty(Integer.valueOf(request.getParameter("penalty")));
-    cost.setParking(Integer.valueOf(request.getParameter("parking")));
-    cost.setOtherExpenses(Integer.valueOf(request.getParameter("otherExpenses")));
+    cost.setPrice(Util.parseInt(request.getParameter("price")));
+    cost.setSellingPrice(Util.parseInt(request.getParameter("sellingPrice")));
+    cost.setMilesOn(Util.parseInt(request.getParameter("milesOn")));
+    cost.setBenzine(Util.parseInt(request.getParameter("benzine")));
+    cost.setRepairs(Util.parseInt(request.getParameter("repairs")));
+    cost.setService(Util.parseInt(request.getParameter("service")));
+    cost.setCredit(Util.parseInt(request.getParameter("credit")));
+    cost.setKasko(Util.parseInt(request.getParameter("kasko")));
+    cost.setOsago(Util.parseInt(request.getParameter("osago")));
+    cost.setTax(Util.parseInt(request.getParameter("tax")));
+    cost.setPenalty(Util.parseInt(request.getParameter("penalty")));
+    cost.setParking(Util.parseInt(request.getParameter("parking")));
+    cost.setOtherExpenses(Util.parseInt(request.getParameter("otherExpenses")));
     costService.merge(cost);
   }
 

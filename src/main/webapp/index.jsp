@@ -25,7 +25,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Cost1km</a>
+            <a class="navbar-brand" id="xz2" href="#">Cost1km</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -289,21 +289,15 @@
 
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Выберете машину</h4>
             </div>
             <div class="modal-body">
-                <ul class="nav nav-pills nav-stacked"  id="calculations"></ul>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="openCarBtn" data-dismiss="modal">Open</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <ul class="nav nav-pills nav-stacked" id="calculations"></ul>
             </div>
         </div>
-
     </div>
 </div>
 

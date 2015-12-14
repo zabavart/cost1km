@@ -152,16 +152,12 @@ $('#openCar').click(function () {
                 var carMark = calculation[i].carModification.carModel.carMark.name;
                 var carModel = calculation[i].carModification.carModel.name;
                 $('#calculations').append(
-                    '<li class="calculation" value="' + calculation[i].id + '">' +
-                    '<a href=cost1km>' + carMark + " " + carModel + " " + '</a>' +
+                    '<li class="calculation" data-dismiss="modal" value="' + calculation[i].id + '">' +
+                    '<a href=#>' + carMark + " " + carModel + " " + '</a>' +
                     '<li>');
             }
         }
     );
-});
-
-$('#openCarBtn').click(function () {
-    save();
 });
 
 $('#calculations').on('click', '.calculation', function () {
@@ -170,6 +166,10 @@ $('#calculations').on('click', '.calculation', function () {
         {},
         function (data) {
             console.log(data);
+            $('#isCredit').hide();
+            $('#costGroup').show();
+            $('#carGroup').show();
+            $('#carMiniInfo').show();
         }
     );
 });

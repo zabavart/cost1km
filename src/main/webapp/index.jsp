@@ -296,7 +296,7 @@
                 <h4 class="modal-title">Выберете машину</h4>
             </div>
             <div class="modal-body">
-                <div class="list-group" id="calculations"></div>
+                <ul class="nav nav-pills nav-stacked"  id="calculations"></ul>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="openCarBtn" data-dismiss="modal">Open</button>

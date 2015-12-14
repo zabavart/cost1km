@@ -35,8 +35,6 @@ $('#carModification').change(function () {
     $('#costGroup').show();
     $('#carGroup').hide();
     $('#carMiniInfo').show();
-    var mark = $('#carMark option:selected').text();
-    var model = $('#carModel option:selected').text();
     var serie = $('#carSerie option:selected').text();
     var modification = $('#carModification option:selected').text();
     $('#carMiniInfo').html('<strong>Модель:</strong> ' + serie + ' ' + modification);
@@ -153,7 +151,10 @@ $('#openCar').click(function () {
             for (i = 0; i < calculation.length; i++) {
                 var carMark = calculation[i].carModification.carModel.carMark.name;
                 var carModel = calculation[i].carModification.carModel.name;
-                $('#calculations').append('<a href="#" class="list-group-item">' + carMark + " " + carModel + " " + '</a>');
+                $('#calculations').append(
+                    '<li class="calculation" value="' + calculation[i].id + '">' +
+                    '<a href=cost1km>' + carMark + " " + carModel + " " + '</a>' +
+                    '<li>');
             }
         }
     );
@@ -161,4 +162,8 @@ $('#openCar').click(function () {
 
 $('#openCarBtn').click(function () {
     save();
+});
+
+$('#calculations').on('click', '.calculation', function () {
+    alert(this.value);
 });

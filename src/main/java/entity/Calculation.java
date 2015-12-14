@@ -11,7 +11,6 @@ import javax.persistence.*;
         query = "select c from Calculation c where car_id = :car_id and user_id = :user_id"),
 })
 public class Calculation {
-
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id", nullable = false, unique = true)

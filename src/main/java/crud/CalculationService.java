@@ -34,9 +34,8 @@ public class CalculationService {
     return em.find(Calculation.class, id);
   }
 
-  public List<Calculation> get() {
-    Query namedQuery = em.createNamedQuery("Calculation.get");
-    return namedQuery.getResultList();
+  public List get() {
+    return em.createNamedQuery("Calculation.get").getResultList();
   }
 
   public void update(Calculation calculation) {
@@ -45,10 +44,9 @@ public class CalculationService {
     em.getTransaction().commit();
   }
 
-  public List<Calculation>  getByUserAndCarModification(CarModification carModification, User user) {
-    Query namedQuery = em.createNamedQuery("Calculation.getByUserAndCarModification")
+  public List getByUserAndCarModification(CarModification carModification, User user) {
+    return em.createNamedQuery("Calculation.getByUserAndCarModification")
         .setParameter("car_id", carModification.getIdCarModification())
-        .setParameter("user_id", user.getId());
-    return namedQuery.getResultList();
+        .setParameter("user_id", user.getId()).getResultList();
   }
 }

@@ -165,5 +165,11 @@ $('#openCarBtn').click(function () {
 });
 
 $('#calculations').on('click', '.calculation', function () {
-    alert(this.value);
+    $.get(
+        '/calculations/' + this.value,
+        {},
+        function (data) {
+            console.log(data);
+        }
+    );
 });

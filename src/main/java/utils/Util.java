@@ -2,6 +2,9 @@ package utils;
 
 public class Util {
   public static int parseInt(String s) {
+    if (s == null) {
+      return 0;
+    }
     if (s.isEmpty()) {
       return 0;
     } else {

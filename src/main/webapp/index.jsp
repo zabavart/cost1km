@@ -75,15 +75,15 @@
         </div>
 
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
                 <div class="alert alert-warning alert-dismissible fade in text-center" id="carMiniInfo">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-md-4"></div>
         </div>
 
         <div class="row">

@@ -37,7 +37,7 @@ $('#carModification').change(function () {
     $('#carMiniInfo').show();
     var serie = $('#carSerie option:selected').text();
     var modification = $('#carModification option:selected').text();
-    $('#carMiniInfo').html('<strong>Модель:</strong> ' + serie + ' ' + modification);
+    $('#carMiniInfo').html(serie + ' ' + modification);
 });
 
 $('#isCredit').change(function () {
@@ -117,6 +117,10 @@ function controller() {
 }
 
 function save() {
+    console.log('!!!! ' + $('#carModification'));
+    console.log('!!!! ' + $("#carModification option:selected").text());
+    console.log('!!!! ' + $("#carModification option:selected").val());
+
     $.post(
         '/costs',
         {
@@ -159,17 +163,42 @@ $('#openCar').click(function () {
         }
     );
 });
-
+var xzCarMod;
 $('#calculations').on('click', '.calculation', function () {
     $.get(
         '/calculations/' + this.value,
         {},
         function (data) {
             console.log(data);
+
             $('#isCredit').hide();
             $('#costGroup').show();
             $('#carGroup').show();
-            $('#carMiniInfo').show();
+
+            var carMark = data[0].calculation.carModification.carModel.carMark.name
+            var carModel = data[0].calculation.carModification.carModel.name;
+            $('#carMiniInfo').show().html(carMark + " " + carModel);
+
+            $('#carMark').val(data[0].calculation.carModification.carModel.carMark.idCarMark);
+            $('#carModel').val(data[0].calculation.carModification.carModel.idCarModel);
+            $('#carSerie').val(data[0].calculation.carModification.carSerie.idCarSerie);
+            $('#carModification').val(data[0].calculation.carModification.idCarModification);
+
+            xzCarMod = data[0].calculation.carModification.idCarModification;
+
+            $('#price').val(data[0].price);
+            $('#sellingPrice').val(data[0].sellingPrice);
+            $('#milesOn').val(data[0].milesOn);
+            $('#benzine').val(data[0].benzine);
+            $('#repairs').val(data[0].repairs);
+            $('#service').val(data[0].service);
+            $('#credit').val(data[0].credit);
+            $('#kasko').val(data[0].kasko);
+            $('#osago').val(data[0].osago);
+            $('#tax').val(data[0].tax);
+            $('#penalty').val(data[0].penalty);
+            $('#parking').val(data[0].parking);
+            $('#otherExpenses').val(data[0].otherExpenses);
         }
     );
 });
